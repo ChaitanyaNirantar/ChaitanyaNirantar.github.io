@@ -1,639 +1,1455 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Chaitanya Nirantar portfolio - Software Engineering student focused on C++, Java, Python, DSA, OOP, Machine Learning, and practical software projects." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chaitanya Nirantar | Portfolio</title>
-  <link rel="stylesheet" href="stylesheet.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --text: #1E293B;
+      --muted: #64748B;
+      --accent: #4F46E5;
+      --accent2: #7C3AED;
+      --accent-lt: #EEF2FF;
+      --border: #E2E8F0;
+      --sh: 0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+      --sh-lg: 0 4px 6px rgba(0,0,0,.05),0 10px 40px rgba(0,0,0,.10);
+      --r: 14px;
+      --nav: 68px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav);
+      z-index: 200; background: rgba(255,255,255,.90);
+      backdrop-filter: blur(18px); border-bottom: 1px solid var(--border);
+    }
+    .nav-in {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 1.35rem;
+      color: var(--text); text-decoration: none; letter-spacing: -.02em;
+    }
+    .nav-links { display: flex; list-style: none; gap: 1.75rem; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: .875rem;
+      font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent) !important; color: #fff !important;
+      padding: .45rem 1.2rem; border-radius: 50px;
+      font-size: .8125rem !important; font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; }
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .ham span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+
+    /* SHARED */
+    section { padding: 5rem 2rem; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .label { font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; }
+    .sh {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(2rem,4vw,2.75rem); font-weight: 800;
+      color: var(--text); line-height: 1.15; margin-bottom: 1rem;
+    }
+    .sub { font-size: 1.0625rem; color: var(--muted); line-height: 1.75; max-width: 600px; }
+    .sec-hd { margin-bottom: 3.5rem; }
+    .sec-hd.c { text-align: center; }
+    .sec-hd.c .sub { margin: 0 auto; }
+
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .fi.v { opacity: 1; transform: none; }
+    .d1{transition-delay:.10s} .d2{transition-delay:.20s}
+    .d3{transition-delay:.30s} .d4{transition-delay:.40s}
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 1.9rem; border-radius: 50px; font-weight: 600;
+      font-size: .9375rem; text-decoration: none; transition: all .2s; border: none; cursor: pointer;
+    }
+    .btn-p { background: var(--accent); color: #fff; }
+    .btn-p:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,.35); }
+    .btn-s { background: #fff; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-s:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: var(--sh); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: calc(var(--nav) + 3rem) clamp(1.5rem,5vw,6rem) 3rem;
+      background: #fff; position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; transform: translate(-50%, -50%); will-change: left, top;
+    }
+    .hero-glow-1 {
+      width: 960px; height: 960px;
+      background: radial-gradient(circle, rgba(79,70,229,.18) 0%, transparent 65%);
+      filter: blur(80px);
+    }
+    .hero-glow-2 {
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(124,58,237,.14) 0%, transparent 65%);
+      filter: blur(56px);
+    }
+    .hero-wrap {
+      width: 100%; max-width: 1300px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      grid-template-rows: 1fr auto; gap: 0 4rem;
+      position: relative; z-index: 1;
+    }
+    .hero-left {
+      display: flex; flex-direction: column;
+      justify-content: center; gap: .1rem;
+      padding: 2rem 0;
+    }
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 2rem 0 2rem 4rem; border-left: 1px solid var(--border);
+    }
+    #hnTop, #hnBot {
+      font-family: 'DM Sans', sans-serif; font-size: clamp(2.9rem,7.5vw,8rem);
+      font-weight: 800; line-height: 0.93; letter-spacing: -.03em; display: block;
+      color: var(--text);
+    }
+    #hnBot {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .avail-badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: transparent; border: none; color: #15803D;
+      font-size: .8rem; font-weight: 600; letter-spacing: .03em;
+      padding: .35rem .85rem; border-radius: 50px; margin-bottom: 1.25rem;
+    }
+    .avail-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #22C55E;
+      box-shadow: 0 0 0 3px rgba(34,197,94,.25);
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-green { 0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.25)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,.1)} }
+    .hero-role { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .75rem; }
+    .hero-desc { font-size: .9375rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .hero-acts { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .hero-stats {
+      grid-column: 1 / -1; display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 5rem;
+    }
+    .hero-stats > div { padding: 0 2.5rem; border-right: 1px solid var(--border); text-align: center; }
+    .hero-stats > div:last-child { border-right: none; }
+    .stat-n { font-size: 1.6rem; font-weight: 900; color: var(--text); line-height: 1; letter-spacing: -.04em; }
+    .stat-l { font-size: .8rem; color: var(--muted); margin-top: .25rem; }
+
+    /* avatar */
+    .av-wrap { display: flex; justify-content: center; align-items: center; position: relative; }
+    .av-ring {
+      width: 340px; height: 340px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 5px; box-shadow: 0 20px 60px rgba(79,70,229,.25);
+      animation: float 6s ease-in-out infinite; flex-shrink: 0;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
+    .av-inner {
+      width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+      background: linear-gradient(135deg,#EEF2FF,#F5F3FF);
+    }
+    .av-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 50%; display: block; }
+    .badge {
+      position: absolute; background: #fff; border-radius: 12px; padding: .7rem 1rem;
+      box-shadow: var(--sh-lg); display: flex; align-items: center; gap: .6rem;
+      font-size: .8125rem; font-weight: 600; color: var(--text); white-space: nowrap;
+    }
+    .badge-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+    .badge-tl { top: 18px; left: -28px; animation: bfl 5s ease-in-out infinite; }
+    .badge-br { bottom: 28px; right: -28px; animation: bfl 5s ease-in-out 1.5s infinite; }
+    @keyframes bfl { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+    /* ABOUT */
+    #about { background: var(--bg-alt); }
+    .about-g { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .about-photo-col { position: relative; }
+    .about-photo-frame {
+      width: 100%; max-width: 380px; aspect-ratio: 4/5;
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(79,70,229,.18);
+      position: relative;
+    }
+    .about-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .about-photo-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--accent); color: #fff; border-radius: 16px;
+      padding: 1rem 1.25rem; box-shadow: 0 8px 24px rgba(79,70,229,.3);
+      text-align: center;
+    }
+    .about-photo-badge strong { display: block; font-size: 1.5rem; font-weight: 900; letter-spacing: -.03em; }
+    .about-photo-badge span { font-size: .75rem; font-weight: 500; opacity: .85; }
+    .about-content { padding-top: .5rem; }
+    .about-content p { font-size: 1.0625rem; color: var(--muted); line-height: 1.82; margin-bottom: 1.4rem; }
+    .about-content p strong { color: var(--text); font-weight: 600; }
+    .fun-facts { margin-top: 1.75rem; margin-bottom: 2rem; }
+    .fun-facts-title { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .ff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
+    .ff {
+      display: flex; align-items: flex-start; gap: .65rem;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 10px; padding: .75rem 1rem; font-size: .875rem;
+      color: var(--text); font-weight: 500; line-height: 1.45;
+      box-shadow: var(--sh);
+    }
+    .ff-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+
+    /* JOURNEY */
+    #journey { background: var(--bg); }
+    .tl { position: relative; max-width: 880px; margin: 0 auto; }
+    .tl::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      transform: translateX(-50%);
+    }
+    .tl-item { display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0; margin-bottom: 2.25rem; align-items: center; }
+    .tl-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.4rem 1.5rem; box-shadow: var(--sh); transition: transform .2s, box-shadow .2s;
+    }
+    .tl-card:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
+    .tl-empty {}
+    .tl-dot { display: flex; justify-content: center; align-items: center; position: relative; z-index: 1; }
+    .dot {
+      width: 42px; height: 42px; border-radius: 50%; background: #fff;
+      border: 3px solid var(--accent); display: flex; align-items: center;
+      justify-content: center; font-size: 1rem; box-shadow: 0 0 0 5px rgba(79,70,229,.1);
+    }
+    .tl-yr { font-size: .72rem; font-weight: 700; color: var(--accent); letter-spacing: .05em; text-transform: uppercase; margin-bottom: .3rem; }
+    .tl-card h3 { font-size: .9375rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; }
+    .tl-org { font-size: .8375rem; font-weight: 600; color: var(--accent); margin-bottom: .5rem; }
+    .tl-card p { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+    /* SKILLS */
+    #skills { background: var(--bg-alt); }
+    .sk-g { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; }
+    .sk-cat {
+      background: #fff; border-radius: var(--r); padding: 1.75rem;
+      box-shadow: var(--sh); border: 1px solid var(--border);
+    }
+    .sk-hd { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.4rem; }
+    .sk-ic { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-lt); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .sk-hd h3 { font-size: .9375rem; font-weight: 700; color: var(--text); }
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tag {
+      display: inline-flex; align-items: center; padding: .35rem .85rem; border-radius: 50px;
+      font-size: .8rem; font-weight: 500; background: var(--accent-lt);
+      color: var(--accent); border: 1px solid rgba(79,70,229,.14);
+    }
+    .tag.g { background: #F0FDF4; color: #16A34A; border-color: rgba(22,163,74,.14); }
+    .tag.o { background: #FFF7ED; color: #EA580C; border-color: rgba(234,88,12,.14); }
+
+    /* EXPERIENCE */
+    #experience { background: var(--bg); }
+    .exp-list { display: flex; flex-direction: column; gap: 1.4rem; max-width: 900px; margin: 0 auto; }
+    .exp-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.75rem 2rem; box-shadow: var(--sh);
+      display: grid; grid-template-columns: 52px 1fr; gap: 1.5rem; align-items: start;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .exp-card:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
+    .exp-logo {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--accent-lt); display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; flex-shrink: 0;
+    }
+    .exp-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .4rem; margin-bottom: .2rem; }
+    .exp-title { font-size: 1.0625rem; font-weight: 700; color: var(--text); }
+    .exp-period {
+      font-size: .78rem; color: var(--muted); background: var(--bg-alt);
+      padding: .22rem .75rem; border-radius: 50px; border: 1px solid var(--border); font-weight: 500;
+    }
+    .exp-co { font-size: .9375rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+    .exp-ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .exp-ul li { font-size: .9125rem; color: var(--muted); line-height: 1.65; padding-left: 1.25rem; position: relative; }
+    .exp-ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .exp-ts { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+
+    /* PROJECTS */
+    #projects { background: var(--bg-alt); }
+    .filter-row { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+    .fbtn {
+      padding: .45rem 1.2rem; border-radius: 50px; border: 1.5px solid var(--border);
+      background: #fff; color: var(--muted); font-size: .875rem; font-weight: 500;
+      cursor: pointer; transition: all .2s; font-family: 'Inter', sans-serif;
+    }
+    .fbtn.on, .fbtn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .proj-g { display: grid; grid-template-columns: repeat(auto-fill,minmax(330px,1fr)); gap: 1.6rem; }
+    .pc {
+      background: #fff; border-radius: var(--r); border: 1px solid var(--border);
+      overflow: hidden; box-shadow: var(--sh); transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .pc:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+
+    /* project thumbnail */
+    .pc-thumb {
+      height: 158px; position: relative; overflow: hidden;
+      display: flex; align-items: flex-end; padding: 1rem 1.5rem 1.1rem;
+    }
+    .pc-thumb-icon { font-size: 2.5rem; position: absolute; top: 1rem; left: 1.5rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,.2)); z-index: 2; }
+    .pc-thumb-label {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,.22); backdrop-filter: blur(6px);
+      color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; padding: .25rem .65rem; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,.3); z-index: 2;
+    }
+    /* decorative bars */
+    .pc-bars {
+      position: absolute; bottom: 0; right: 0;
+      display: flex; align-items: flex-end; gap: 4px;
+      padding: 0 1.25rem 0 0; opacity: .28; z-index: 1;
+    }
+    .pc-bar { width: 13px; background: #fff; border-radius: 3px 3px 0 0; }
+    /* decorative line chart */
+    .pc-line-chart {
+      position: absolute; inset: 0; z-index: 1; opacity: .18;
+    }
+    .pc-line-chart polyline { fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-dots-row {
+      position: absolute; top: 48%; left: 0; right: 0;
+      display: flex; justify-content: space-evenly; padding: 0 3rem;
+      z-index: 1; opacity: .22;
+    }
+    .pc-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; }
+
+    .pc-top { padding: 1.1rem 1.5rem 0; display: flex; justify-content: space-between; align-items: flex-start; }
+    .pc-cat {
+      font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-lt); padding: .22rem .75rem; border-radius: 50px;
+    }
+    .pc-yr { font-size: .8rem; color: var(--muted); font-weight: 500; }
+    .pc-body { padding: .85rem 1.5rem; flex: 1; }
+    .pc-body h3 { font-size: 1.0625rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; line-height: 1.3; }
+    .pc-body p { font-size: .88rem; color: var(--muted); line-height: 1.68; margin-bottom: .85rem; }
+    .pc-metrics { display: flex; gap: .85rem; flex-wrap: wrap; margin-bottom: .7rem; }
+    .met { display: flex; align-items: center; gap: .35rem; font-size: .8rem; color: var(--text); }
+    .met-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .met span:last-child { font-weight: 700; }
+    .pc-foot {
+      padding: .9rem 1.5rem 1.35rem; display: flex; align-items: center;
+      justify-content: space-between; border-top: 1px solid var(--border); flex-wrap: wrap; gap: .65rem;
+    }
+    .tech-row { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tb { font-size: .72rem; font-weight: 500; padding: .18rem .55rem; border-radius: 4px; background: var(--bg-alt); color: var(--muted); border: 1px solid var(--border); }
+    .pl { display: inline-flex; align-items: center; gap: .35rem; font-size: .875rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: gap .18s; }
+    .pl:hover { gap: .6rem; }
+    .pl-na { color: var(--muted); font-size: .875rem; font-style: italic; }
+    .pc-thumb-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: top left; z-index: 0; display: block;
+    }
+    .pc-thumb.has-img::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(0,0,0,.18) 0%, rgba(0,0,0,.52) 100%);
+    }
+
+    /* CERTIFICATIONS */
+    #certifications { background: var(--bg); }
+    .cert-g { display: grid; grid-template-columns: repeat(auto-fill,minmax(265px,1fr)); gap: 1.5rem; }
+    .cert-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; box-shadow: var(--sh); transition: transform .2s, box-shadow .2s; cursor: pointer;
+    }
+    .cert-card:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); }
+    .cert-img { width: 100%; height: 175px; object-fit: cover; object-position: center top; display: block; }
+    .cert-ph {
+      width: 100%; height: 175px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; font-size: 2.8rem; gap: .45rem;
+    }
+    .cert-ph span { font-size: .825rem; font-weight: 700; }
+    .cert-body { padding: 1.1rem 1.25rem; }
+    .cert-iss { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: .3rem; }
+    .cert-name { font-size: .9125rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; line-height: 1.4; }
+    .cert-dt { font-size: .8rem; color: var(--muted); }
+    .cert-progress {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .7rem; font-weight: 700; color: #B45309;
+      background: #FEF3C7; border: 1px solid rgba(180,83,9,.18);
+      padding: .22rem .75rem; border-radius: 50px; margin-bottom: .4rem;
+    }
+    .cert-progress::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #F59E0B; display: inline-block;
+      animation: certpulse 1.5s ease-in-out infinite;
+    }
+    @keyframes certpulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+
+    /* VOLUNTEERING */
+    #volunteering { background: var(--bg-alt); }
+    .vol-g { display: grid; grid-template-columns: repeat(auto-fill,minmax(330px,1fr)); gap: 1.6rem; }
+    .vol-card {
+      background: #fff; border-radius: var(--r); border: 1px solid var(--border);
+      overflow: hidden; box-shadow: var(--sh); transition: transform .2s, box-shadow .2s;
+    }
+    .vol-card:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); }
+    .vol-img { width: 100%; height: 215px; object-fit: cover; display: block; }
+    .vol-ph { width: 100%; height: 215px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .vol-body { padding: 1.4rem 1.5rem; }
+    .vol-role { font-size: .7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .35rem; }
+    .vol-body h3 { font-size: 1.0125rem; font-weight: 700; color: var(--text); margin-bottom: .45rem; }
+    .vol-body p { font-size: .88rem; color: var(--muted); line-height: 1.68; }
+    .vol-per { font-size: .8rem; color: var(--muted); margin-top: .8rem; display: flex; align-items: center; gap: .35rem; }
+
+    /* gallery */
+    .gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2.75rem; }
+    .gallery.wide { grid-template-columns: repeat(3,1fr); }
+    .gallery > div { overflow: hidden; border-radius: 10px; }
+    .gimg { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform .3s, filter .3s; cursor: pointer; }
+    .gimg:hover { transform: scale(1.04); filter: brightness(1.06); }
+
+    /* CONTACT */
+    #contact { background: var(--text); color: #fff; }
+    #contact .label { color: #818CF8; }
+    #contact .sh { color: #fff; }
+    #contact .sub { color: #94A3B8; }
+    .con-g { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .con-links { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2.25rem; }
+    .con-link {
+      display: flex; align-items: center; gap: 1rem; text-decoration: none; color: #fff;
+      padding: 1.15rem 1.4rem; border-radius: var(--r);
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      transition: all .2s;
+    }
+    .con-link:hover { background: rgba(79,70,229,.3); border-color: rgba(99,102,241,.4); transform: translateX(4px); }
+    .con-link-ic { width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .con-link-t strong { display: block; font-weight: 600; font-size: .9375rem; }
+    .con-link-t span { font-size: .875rem; color: #94A3B8; }
+    .cta-box { text-align: center; }
+    .cta-hdg { font-family: 'DM Sans', sans-serif; font-size: clamp(1.75rem,3vw,2.5rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 1.4rem; }
+    .cta-hdg em { font-style: italic; color: #818CF8; }
+    .cta-sub { color: #94A3B8; font-size: 1rem; margin-bottom: 2rem; line-height: 1.72; }
+
+    /* FOOTER */
+    footer { background: #0F0F1A; color: #475569; text-align: center; padding: 1.75rem 2rem; font-size: .875rem; }
+    footer a { color: #818CF8; text-decoration: none; }
+
+    /* LIGHTBOX */
+    .lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.92); z-index: 900; align-items: center; justify-content: center; padding: 2rem; }
+    .lb.on { display: flex; }
+    .lb img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 8px; }
+    .lb-close {
+      position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(255,255,255,.15);
+      border: none; color: #fff; width: 44px; height: 44px; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.28); }
+
+    /* CUSTOM CURSOR */
+    @media (hover: hover) and (pointer: fine) {
+      * { cursor: none !important; }
+      .cursor-dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--accent); position: fixed;
+        pointer-events: none; z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width .22s, height .22s, opacity .3s;
+        opacity: 0;
+      }
+      .cursor-ring {
+        width: 36px; height: 36px; border-radius: 50%;
+        border: 1.5px solid var(--accent); position: fixed;
+        pointer-events: none; z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: width .3s, height .3s, opacity .3s, background .3s;
+        opacity: 0;
+      }
+      .cursor-dot.cur-on { opacity: 1; }
+      .cursor-ring.cur-on { opacity: .6; }
+      .cursor-dot.cur-hov { width: 0; height: 0; opacity: 0; }
+      .cursor-ring.cur-hov { width: 52px; height: 52px; opacity: 1; background: rgba(124,58,237,.08); }
+    }
+
+    /* SCROLL TOP */
+    .st {
+      position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px;
+      border-radius: 50%; background: var(--accent); color: #fff; border: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; box-shadow: 0 4px 20px rgba(79,70,229,.4);
+      opacity: 0; transform: translateY(10px); transition: all .3s; z-index: 50;
+    }
+    .st.on { opacity: 1; transform: none; }
+    .st:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .sk-g { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 4rem 1.25rem; }
+      .hero-wrap { grid-template-columns: 1fr; gap: 2rem 0; }
+      .hero-left { padding: 1.5rem 0 0; }
+      .hero-right { border-left: none; padding: 0; }
+      #hnTop, #hnBot { font-size: clamp(2.5rem,14vw,5rem); }
+      .hero-stats { flex-wrap: wrap; margin-top: 1.25rem; padding-top: 1.25rem; }
+      .hero-stats > div { flex: 1 1 40%; border-right: none; padding: .4rem 0; }
+      .av-ring { width: 240px; height: 240px; }
+      .badge-tl { left: 0; } .badge-br { right: 0; }
+      .about-g { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo-frame { max-width: 100%; aspect-ratio: 4/3; }
+      .about-photo-badge { bottom: -12px; right: 12px; }
+      .ff-grid { grid-template-columns: 1fr; }
+      .tl::before { left: 20px; }
+      .tl-item { grid-template-columns: 44px 1fr; }
+      .tl-empty { display: none; }
+      .tl-dot { justify-content: flex-start; }
+      .dot { width: 36px; height: 36px; font-size: .85rem; }
+      .tl-item .tl-dot { order: -1; }
+      .sk-g { grid-template-columns: 1fr; }
+      .exp-card { grid-template-columns: 1fr; gap: .9rem; }
+      .proj-g { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .con-g { grid-template-columns: 1fr; gap: 3rem; }
+      .nav-links { display: none; }
+      .ham { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: var(--nav); left: 0; right: 0;
+        background: #fff; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+        box-shadow: var(--sh-lg); gap: 1.25rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery { grid-template-columns: 1fr; }
+      .ff-grid { grid-template-columns: 1fr; }
+      .cert-g { grid-template-columns: 1fr; }
+      .vol-g { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <div class="nav-logo">My Digital Portfolio.</div>
-    <ul class="nav-links">
-      <li><a href="#home"         class="nav-link active">Home</a></li>
-      <li><a href="#about"        class="nav-link">About</a></li>
-      <li><a href="#projects"     class="nav-link">Projects</a></li>
-      <li><a href="#skills"       class="nav-link">Skills</a></li>
-      <li><a href="#certificates" class="nav-link">Certificates</a></li>
-      <li><a href="#education"    class="nav-link">Education</a></li>
-      <li><a href="#contact"      class="nav-link">Contact</a></li>
+<div class="cursor-dot" id="cdot"></div>
+<div class="cursor-ring" id="cring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">CN</a>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#volunteering">Volunteering</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <section class="home" id="home">
-    <div class="home-content">
-      <p class="availability-pill"><i class="fas fa-code"></i> Information Management Student</p>
-      <h1>Hi, I'm <span class="highlight">Chaitanya Nirantar</span></h1>
-      <h2 class="typing-wrapper">
-        <span id="typed-text"></span><span class="cursor">|</span>
-      </h2>
-      <p class="home-desc">
-        I love to explore the spaces where technology meets decision-making—transforming data into insights, systems into products, and challenges into opportunities.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="primary-btn"><i class="fas fa-layer-group"></i> View Projects</a>
-        <a href="#contact" class="secondary-btn"><i class="fas fa-paper-plane"></i> Contact Me</a>
-      </div>
-      <div class="hero-stats" aria-label="Portfolio highlights">
-        <div class="stat-card">
-          <strong>3+</strong>
-          <span>Core Projects</span>
-        </div>
-        <div class="stat-card">
-          <strong>12</strong>
-          <span>Certificates</span>
-        </div>
-        <div class="stat-card">
-          <strong>5</strong>
-          <span>Key Skills</span>
-        </div>
-      </div>
-      <div class="social-icons">
-        <a href="https://github.com/ChaitanyaNirantar" target="_blank" class="social-btn" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/chaitanya-nirantar-0918841b3/" target="_blank" class="social-btn" title="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
-    </div>
-   <div class="home-img">
-      <div class="profile-card-note">
-        <i class="fas fa-terminal"></i>
-        <span>Bridging code, data, and strategy to solve real-world problems.</span>
-      </div>
-      <div class="img-box">
-        <img src="chai.jpg" alt="Chaitanya Nirantar Profile Picture" />
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <h2 class="section-heading">About <span class="highlight">Me</span></h2>
-    <div class="about-container">
-      <div class="about-avatar">
-        <div class="avatar-ring">
-          <div class="avatar-inner">
-            <span class="avatar-emoji"><i class="fas fa-laptop-code"></i></span>
-          </div>
-        </div>
-        <h3 class="about-title">Masters In Information Management Student!</h3>
-      </div>
-      <p class="about-text">
-I'm a graduate student in the Master of Science in Information Management program at University of Illinois Urbana-Champaign with a background in Computer Engineering and two years of experience as a Backend Developer at Jio Platforms Limited. My work has spanned cloud platform development, database management, data analytics, and scalable backend systems using technologies such as Java Spring Boot, SQL, Kubernetes, and Azure DevOps.
-
-<br> I am passionate about transforming data into actionable insights and bridging the gap between technology and business. My experience includes developing cloud provisioning solutions, building machine learning models for cybersecurity research, and creating digital solutions for nonprofit organizations. Through my MSIM studies, I am expanding my expertise in data analytics, information consulting, and business intelligence with the goal of pursuing Business Analyst and Product Management roles that combine technical problem-solving with strategic decision-making.
-      </p>
-      <div class="about-highlights">
-        <div class="about-highlight">
-          <i class="fas fa-sitemap"></i>
-          <span>Data Analytics & Business Intelligence</span>
-        </div>
-        <div class="about-highlight">
-          <i class="fas fa-cubes"></i>
-          <span>Backend & Cloud Developmentb</span>
-        </div>
-        <div class="about-highlight">
-          <i class="fas fa-brain"></i>
-          <span>Artificial Intelligence</span>
-        </div>
-        <div class="about-highlight">
-          <i class="fas fa-users"></i>
-          <span>Cross-Functional Collaboration</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="experience" id="experience">
-    <h2 class="section-heading">My <span class="highlight"> Professional Experience</span></h2>
-    <p class="projects-intro">
-      Backend engineer turned information management graduate student, evolving from building scalable cloud systems to transforming data into strategic business insights and product-driven solutions.
-    </p>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-visual project-visual-java logo-visual">
-          <div class="project-thumb">
-            <div class="thumb-topbar"><span></span><span></span><span></span></div>
-            <div class="thumb-dashboard">
-              <div class="thumb-sidebar"></div>
-              <div class="thumb-main">
-                <div class="thumb-line wide"></div>
-                <div class="thumb-metrics">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="thumb-table">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-icon"><i class="fas fa-store"></i></div>
-          <img src="jio_cloudxp_logo.jpg" alt="CloudXP Logo" class="project-logo">
-          <span class="project-status">Featured</span>
-        </div>
-        <div class="project-body">
-          <div class="project-header">
-  <div class="project-logo-title">
-    
-    
-
-  <a class="project-link" href="https://www.jio.com/jcms/cloudxp/" target="_blank" aria-label="View CloudXP">
-    <i class="fas fa-external-link-alt"></i>
-  </a>
-</div>
-            <div>
-              <p class="project-kicker">Jio Platforms Limited</p>
-              <h3 class="project-title">Software Development Engineer</h3>
-            </div>
-            <a class="project-link" href="https://www.jio.com/jcms/cloudxp/" target="_blank" aria-label="View Grocery Store Manager on GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
-          <p class="project-sub">JavaSpringBoot | SQL | REST APIs | KUBERNETES</p>
-          <p class="project-desc"><div>
-    • Backend Developer on a cloud-native microservices platform supporting 10+ government cloud tenants, building RESTful APIs using Java, Spring Boot, and SQL, deployed via CI/CD pipelines on Microsoft Azure DevOps and Kubernetes in an Agile environment.<br><br>
-
-    • Led the design and rollout of a quota management system, defining feature scope and logic across subscription, project, and organization levels, enabling accurate tracking of 500+ cloud resource allocations.<br><br>
-
-    • Developed high-performance REST APIs for enterprise executive dashboards, supporting 50+ administrative users and improving operational diagnosis time by 20% through optimized data pipelines and secure service integration.<br><br>
-
-    • Improved API performance and reduced latency by 30% in production through query optimization, database indexing, and efficient pagination strategies.<br><br>
-
-    • Collaborated with cross-functional teams including product, DevOps, and frontend engineers to drive end-to-end delivery of backend features, translating business requirements into scalable technical solutions in an Agile environment.
-</div></p>
-          <div class="project-tags">
-            <span>Java</span><span>JavaFX</span><span>OOP</span><span>File I/O</span><span>GUI</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-visual project-visual-dsa logo-visual">
-  <div class="project-thumb">
-    <div class="thumb-topbar"><span></span><span></span><span></span></div>
-    <div class="thumb-nodes">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <div class="thumb-code">
+    <div class="ham" id="ham" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </div>
   </div>
+</nav>
 
-  <div class="project-icon"><i class="fas fa-boxes"></i></div>
-  <img src="drdo_logo.png" alt="DRDO Logo" class="project-logo">
-  <span class="project-status">DSA Core</span>
-</div>
-        <div class="project-body">
-          <div class="project-header">
-            <div>
-              <p class="project-kicker">Defense Research Development Organization</p>
-              <h3 class="project-title">Project Intern</h3>
-            </div>
-            <a class="project-link" href="https://github.com/KhuramSohail56/Inventory-Track-Pro-DSA" target="_blank" aria-label="View Inventory Track Pro on GitHub"><i class="fab fa-github"></i></a>
-          </div>
-          <p class="project-sub">Machine Learning |Python | WireShark</p>
-          <p class="project-desc"><div>
-    • Conducted applied research in emerging technologies, developing a machine learning–based cybersecurity system for national defense infrastructure, enabling real-time threat detection and integration into security monitoring pipelines. Supported test case development, debugging, and integration testing throughout the software development lifecycle.<br><br>
-
-    • Processed and analyzed over 1 million network packet records to train machine learning models, achieving 96% detection accuracy for DDoS attack identification and classification.<br><br>
-
-    • Captured and analyzed live network traffic using Wireshark, transforming raw packet data into flow-level features with CICFlowMeter to create structured datasets for machine learning workflows.<br><br>
-
-    • Designed and implemented a scalable data preprocessing and feature engineering pipeline, extracting critical traffic metrics such as flow duration, packet rate, and byte distribution to improve model reliability and reduce dataset noise.
-</div>
-</ul></p>
-          <div class="project-tags">
-            <span>Machine Learning</span><span>Intrusion Detection Systems (IDS)</span><span>Python</span><span>WireShark</span>CICFlowMeter<span></span>
-          </div>
-        </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow hero-glow-1" id="hg1"></div>
+  <div class="hero-glow hero-glow-2" id="hg2"></div>
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <div id="hnTop">Chaitanya</div>
+      <div id="hnBot">Nirantar</div>
+    </div>
+    <div class="hero-right">
+      <div class="avail-badge"><span class="avail-dot"></span>Available to work</div>
+      <p class="hero-role">Software &amp; Data Professional</p>
+      <p class="hero-desc">Building clarity from complexity—through scalable systems, data-driven thinking, and execution-focused engineering.</p>
+      <div class="hero-acts">
+        <a href="Chaitanya_s_Resume_v1 (2).pdf" download class="btn btn-p">↓ Download Resume</a>
+        <a href="#contact" class="btn btn-s">Let's Connect →</a>
       </div>
-
-      <div class="project-card">
-       <div class="project-visual project-visual-cpp logo-visual">
-  <div class="project-thumb">
-    <div class="thumb-topbar"><span></span><span></span><span></span></div>
-    <div class="thumb-terminal">
-      <span>&gt; add_item</span>
-      <span>&gt; update_stock</span>
-      <span>&gt; save_file</span>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n" data-count="3" data-suffix="+">3+</div><div class="stat-l">Years Experience</div></div>
+      <div><div class="stat-n" data-count="8" data-suffix="+">8+</div><div class="stat-l">Data Projects</div></div>
+      <div><div class="stat-n" data-count="4.0" data-decimal="true">4.0</div><div class="stat-l">GPA at UIUC</div></div>
+      <div><div class="stat-n">LSS</div><div class="stat-l">Green Belt</div></div>
     </div>
   </div>
+</section>
 
-  <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-  <img src="big_logo.jpg" alt="Business Intelligence Group Logo" class="project-logo">
-  <span class="project-status">Consulting</span>
-</div>
-        <div class="project-body">
-          <div class="project-header">
-            <div>
-              <p class="project-kicker">Business Intelligence Group</p>
-              <h3 class="project-title">Technology Consultant</h3>
-            </div>
-            <a class="project-link" href="https://github.com/ChaitanyaNirantar/IIRER" target="_blank" aria-label="View Grocery Store Management System on GitHub"><i class="fab fa-github"></i></a>
-          </div>
-          <p class="project-sub">Java SpringBoot | React | AWS | SQL</p>
-          <p class="project-desc"></p>
-• Modernized grant reporting workflows by replacing fragmented Excel processes with a centralized SQL-based analytics platform.<br><br>
-
-• Evaluated and selected scalable data storage, querying, and reporting technologies through technical feasibility analysis.<br><br>
-
-• Developed backend services for secure data ingestion, transformation, and analytics, improving data reliability and consistency.<br><br>
-
-• Built JWT authentication and role-based access control (RBAC) to secure access across multiple user roles and stakeholders.
-
-            <span>C++</span><span>File Handling</span><span>CRUD</span><span>Console</span>
-          </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-g">
+      <!-- photo -->
+      <div class="about-photo-col fi">
+        <div class="about-photo-frame">
+          <img src="chai.jpg" alt="Chaitanya Nirantar" />
+        </div>
+        <div class="about-photo-badge">
+          <strong>4.0</strong>
+          <span>GPA at UIUC</span>
         </div>
       </div>
+      <!-- content -->
+      <div class="about-content fi d2">
+        <div class="label">About Me</div>
+        <h2 class="sh">From Engineering<br>to Business Impact</h2>
+        <p>
+          My journey began in <strong>Savitribai Phule Pune University</strong>, where I
+          built a strong foundation in <strong>software systems, problem-solving, and scalable engineering design.</strong>
+        </p>
+        <p>
+          I later joined <strong>Reliance Jio as a Software Development Engineer</strong>, where working on large-scale cloud and backend systems helped me realize the real power of data—not just as an output of systems, but as a driver of business decisions and measurable impact.
+<br>
+That realization led me to <strong>UIUC MSIM program</strong>, where I am expanding my focus beyond engineering into the intersection of software, data, and business strategy. Today, I aim to help organizations build technology solutions that are not only scalable and efficient, but also deeply data-driven and aligned with business outcomes.
 
-    </div>
-  </section>
-
-  <section class="projects" id="projects">
-    <h2 class="section-heading">My <span class="highlight">Projects</span></h2>
-    <p class="projects-intro">
-      Practical semester projects focused on clean architecture, fast data access, and user-friendly workflows.
-    </p>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-visual project-visual-java">
-          <div class="project-thumb">
-            <div class="thumb-topbar"><span></span><span></span><span></span></div>
-            <div class="thumb-dashboard">
-              <div class="thumb-sidebar"></div>
-              <div class="thumb-main">
-                <div class="thumb-line wide"></div>
-                <div class="thumb-metrics">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="thumb-table">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-icon"><i class="fas fa-store"></i></div>
-          <span class="project-status">Featured</span>
-        </div>
-        <div class="project-body">
-          <div class="project-header">
-            <div>
-              <p class="project-kicker">Analytical Dashboard</p>
-              <h3 class="project-title">Lifestyle Balance Analytics Dashboard </h3>
-            </div>
-            <a class="project-link" href="https://github.com/KhuramSohail56/Grocery-Store-Manager-JavaFX" target="_blank" aria-label="View Grocery Store Manager on GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
-          <p class="project-sub">JavaFX | OOP | File Handling | CRUD</p>
-          <p class="project-desc"></p>• Designed an end-to-end ETL pipeline in Databricks using Medallion Architecture (Bronze–Silver–Gold layers) to process, clean, and transform lifestyle and wellness data.<br><br>
-• Integrated Databricks with Power BI to visualize refined datasets, enabling automated refreshes and seamless data connectivity.
-          <div class="project-tags">
-            <span>Java</span><span>JavaFX</span><span>OOP</span><span>File I/O</span><span>GUI</span>
+        <div class="fun-facts">
+          <div class="fun-facts-title">A little more about me</div>
+          <div class="ff-grid">
+            <div class="ff"><span class="ff-icon">🤝</span>Builder who thrives at the intersection of engineering and business impact</div>
+            <div class="ff"><span class="ff-icon">📊</span>Data-first mindset with experience turning systems into actionable insights</div>
+            <div class="ff"><span class="ff-icon">🌏</span>Mumbai to Tempe, bridging two worlds and cultures</div>
+            <div class="ff"><span class="ff-icon">🔧</span>I like broken systems—because fixing them is where engineering becomes impact</div>
+            <div class="ff"><span class="ff-icon">☕</span>Firm believer that every problem has a data-driven solution</div>
+            <div class="ff"><span class="ff-icon">📚</span>Always exploring how software + data can drive smarter business decisions</div>
           </div>
         </div>
-      </div>
 
-      <div class="project-card">
-        <div class="project-visual project-visual-dsa">
-          <div class="project-thumb">
-            <div class="thumb-topbar"><span></span><span></span><span></span></div>
-            <div class="thumb-nodes">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="thumb-code">
-              <span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="project-icon"><i class="fas fa-boxes"></i></div>
-          <span class="project-status">DSA Core</span>
-        </div>
-        <div class="project-body">
-          <div class="project-header">
-            <div>
-              <p class="project-kicker">Performance System</p>
-              <h3 class="project-title">Inventory Track Pro</h3>
-            </div>
-            <a class="project-link" href="https://github.com/KhuramSohail56/Inventory-Track-Pro-DSA" target="_blank" aria-label="View Inventory Track Pro on GitHub"><i class="fab fa-github"></i></a>
-          </div>
-          <p class="project-sub">C++ | DSA | Hash Tables | BST | Stacks</p>
-          <p class="project-desc">A high-performance C++ inventory system using core DSA concepts: Hash Tables for O(1) lookups, BST for range searches, Stacks for undo/redo, and Merge/Quick Sort for analytics.</p>
-          <div class="project-tags">
-            <span>C++</span><span>DSA</span><span>BST</span><span>Hash Table</span><span>Sorting</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-visual project-visual-cpp">
-          <div class="project-thumb">
-            <div class="thumb-topbar"><span></span><span></span><span></span></div>
-            <div class="thumb-terminal">
-              <span>&gt; add_item</span>
-              <span>&gt; update_stock</span>
-              <span>&gt; save_file</span>
-            </div>
-          </div>
-          <div class="project-icon"><i class="fas fa-cash-register"></i></div>
-          <span class="project-status">Console</span>
-        </div>
-        <div class="project-body">
-          <div class="project-header">
-            <div>
-              <p class="project-kicker">Semester Project</p>
-              <h3 class="project-title">Grocery Store Management System</h3>
-            </div>
-            <a class="project-link" href="https://github.com/KhuramSohail56/Grocery-Store-Management-System" target="_blank" aria-label="View Grocery Store Management System on GitHub"><i class="fab fa-github"></i></a>
-          </div>
-          <p class="project-sub">C++ | Console App | File Handling</p>
-          <p class="project-desc">A C++ console application (1st-semester project) supporting adding, updating, deleting items, displaying inventory, calculating total cost, and saving/loading from files.</p>
-          <div class="project-tags">
-            <span>C++</span><span>File Handling</span><span>CRUD</span><span>Console</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="skills" id="skills">
-    <h2 class="section-heading">My <span class="highlight">Skills</span></h2>
-    <div class="skills-grid">
-      <div class="skills-col">
-        <h3 class="skills-col-title"><span><i class="fas fa-code"></i></span> Coding Skills</h3>
-        <div class="skill-item">
-          <div class="skill-info"><span>C++</span><span>85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>Python</span><span>80%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>Java</span><span>75%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>HTML &amp; CSS</span><span>90%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>DSA</span><span>78%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
-        </div>
-      </div>
-      <div class="skills-col">
-        <h3 class="skills-col-title"><span><i class="fas fa-rocket"></i></span> Professional Skills</h3>
-        <div class="skill-item">
-          <div class="skill-info"><span>Machine Learning</span><span>70%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>OOP</span><span>85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>Problem Solving</span><span>80%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>Team Collaboration</span><span>90%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-info"><span>Technical Writing</span><span>75%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="journey" id="education">
-  <h2 class="section-heading">My <span class="highlight">Journey</span></h2>
-  <div class="journey-container">
-    <div class="journey-column">
-      <h3 class="journey-title">Education</h3>
-      <div class="journey-box">
-
-        <div class="journey-card">
-          <div class="card-dot"></div>
-          <div class="card-date">2025 - Present</div>
-          <h4 class="card-title">MS in Information Management - University of Illinois Urbana-Champaign</h4>
-          <p class="card-desc">
-            Currently pursuing a Master's degree in Information Management at the University of Illinois Urbana-Champaign.
-            Gaining expertise in data management, analytics, and advanced information systems while working on real-world projects.
-          </p>
-        </div>
-<br> <br>
-        <div class="journey-card">
-          <div class="card-dot"></div>
-          <div class="card-date">2019 - 2023</div>
-          <h4 class="card-title">Bachelor's in Computer Engineering - Pune University</h4>
-          <p class="card-desc">
-            Completed Bachelor's degree in Computer Engineering from Pune University.
-            Built a strong foundation in programming, data structures, algorithms, and software development.
-          </p>
-        </div>
-
+        <a href="#journey" class="btn btn-p">See My Journey →</a>
       </div>
     </div>
   </div>
+</section>
 
-  <section class="certificates" id="certificates">
-    <h2 class="section-heading">My <span class="highlight">Certificates</span></h2>
-    <div class="cert-container">
-      
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="16-1.png" alt="Machine Learning">
-          <div class="cert-content">
-            <h4>Machine Learning</h4>
-            <p>Stanford University (Coursera)</p>
-            <a href="16-1.png" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="html.png" alt="Introduction to HTML">
-          <div class="cert-content">
-            <h4>Introduction to HTML</h4>
-            <p>Sololearn</p>
-            <a href="html.png" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="css.png" alt="Introduction to CSS">
-          <div class="cert-content">
-            <h4>Introduction to CSS</h4>
-            <p>Sololearn</p>
-            <a href="css.png" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="c++.png" alt="Introduction to C++">
-          <div class="cert-content">
-            <h4>Introduction to C++</h4>
-            <p>Sololearn</p>
-            <a href="c++.png" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-       <div class="cert-card">
-        <div class="cert-img">
-          <img src="1.jpeg" alt="English">
-          <div class="cert-content">
-            <h4>Improve Your English Communication Skills</h4>
-            <p>Georgia Tech(coursera) Professional Certificate</p>
-            <a href="1.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="englishcertificate-1.png" alt="English">
-          <div class="cert-content">
-            <h4>Learn English: Beginning Grammar</h4>
-            <p>UCI(Coursera) Professional Certificate</p>
-            <a href="englishcertificate-1.png" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="sql.jpeg" alt="SQL Specialization">
-          <div class="cert-content">
-            <h4>Introduction to SQL</h4>
-            <p>sololearn Professional Certificate</p>
-            <a href="sql.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-       <div class="cert-card">
-        <div class="cert-img">
-          <img src="6.jpeg" alt="Python">
-          <div class="cert-content">
-            <h4>Programming for Everybody (Getting Started with Python)</h4>
-            <p>MICHIGAN University (Coursera)</p>
-            <a href="6.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-       <div class="cert-card">
-        <div class="cert-img">
-          <img src="2.jpeg" alt="Python">
-          <div class="cert-content">
-            <h4>Crash Course on Python</h4>
-            <p>Google Certificate</p>
-            <a href="2.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-       <div class="cert-card">
-        <div class="cert-img">
-          <img src="9.jpeg" alt="GitHub">
-          <div class="cert-content">
-            <h4>Introduction to Git and GitHub</h4>
-            <p>Google Certificate</p>
-            <a href="9.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="cyber.jpeg" alt="Cybersecurity">
-          <div class="cert-content">
-            <h4>Introduction to Cyber Security</h4>
-            <p>SimpliLearn | Skillup</p>
-            <a href="cyber.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-img">
-          <img src="12.jpeg" alt="Cybersecurity">
-          <div class="cert-content">
-            <h4>Introduction to Cybersecurity Tools & Cyberattacks</h4>
-            <p>IBM(coursera)</p>
-            <a href="12.jpeg" class="view-btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-hd c fi">
+      <div class="label">My Journey</div>
+      <h2 class="sh">From Engineering to Strategy</h2>
+      <p class="sub">A deliberate path from technical foundations to business leadership, each chapter building on the last.</p>
     </div>
-  </section>
+    <div class="tl">
 
- 
-
-  <section class="contact" id="contact">
-    <h2 class="section-heading">Contact <span class="highlight">Me!</span></h2>
-    <p class="contact-intro">
-      Have a project idea, collaboration, or internship opportunity? Send a message and I will get back to you.
-    </p>
-    <form action="https://formspree.io/f/mgordgvj" method="POST" class="contact-form" id="contact-form">
-      <div class="form-row">
-        <input type="text" name="Name" placeholder="Full Name" required />
-        <input type="email" name="Email" placeholder="Email Address" required />
-      </div>
-      <div class="form-row">
-        <input type="tel" name="phone" placeholder="WhatsApp No" /> 
-        <input type="text" name="_subject" placeholder="Email Subject"/> 
-      </div>
-      <textarea name="Message" placeholder="Your Message" rows="7" required></textarea>
-      <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-    </form>
-  </section>
-
-  <a href="#home" class="scroll-top" id="scrollTop" title="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
-
-  <div class="ai-chat-wrapper" id="aiChatWrapper">
-    <button class="ai-chat-toggle" id="aiChatToggle" title="Ask my AI Assistant">
-      <i class="fas fa-robot"></i>
-      <span class="ai-pulse"></span>
-    </button>
-    <div class="ai-chat-container" id="aiChatContainer">
-      <div class="ai-chat-header">
-        <div class="ai-bot-info">
-          <div class="ai-avatar-icon"><i class="fas fa-brain"></i></div>
-          <div>
-            <h4>Khurram's AI</h4>
-            <p><span class="online-dot"></span> Online Assistant</p>
-          </div>
+      <div class="tl-item fi">
+        <div class="tl-card">
+          <div class="tl-yr">2019 – 2023</div>
+          <h3>Bachelor of Engineering</h3>
+          <div class="tl-org">Savitribai Phule Pune University</div>
+          <p>Computer Engineering. Built a strong foundation in software systems, problem-solving, and scalable engineering design. GPA: 8.69/10</p>
         </div>
-        <button class="ai-chat-close" id="aiChatClose"><i class="fas fa-times"></i></button>
+        <div class="tl-dot"><div class="dot">🎓</div></div>
+        <div class="tl-empty"></div>
       </div>
-      <div class="ai-chat-messages" id="aiChatMessages">
-        <div class="ai-message bot">
-          Hi! I'm Khurram's AI assistant. Ask me anything about his projects, skills, or education!
+
+      <div class="tl-item fi">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"><div class="dot">⚡</div></div>
+        <div class="tl-card">
+          <div class="tl-yr">2022 – 2023</div>
+          <h3>Editorial Head</h3>
+          <div class="tl-org">Association of Computer Engineering Students</div>
+          <p>Managed publicity, outreach, and technical communications for the IEEE SIESGST branch. Earned a Certificate of Appreciation from the executive committee.</p>
         </div>
       </div>
-      <div class="ai-chat-suggestions">
-        <button class="ai-suggest-btn">Tell me about his projects</button>
-        <button class="ai-suggest-btn">What are his coding skills?</button>
-        <button class="ai-suggest-btn">Contact Info?</button>
+
+      <div class="tl-item fi">
+        <div class="tl-card">
+          <div class="tl-yr">2022 – 2023</div>
+          <h3>Core Member</h3>
+          <div class="tl-org">Google Developer Students Club</div>
+          <p>Volunteered for WiE STEM Lectures at Gyan Jyoti Savitribai Phule School and NMMC School No. 11, delivering STEM education to inspire young students across Navi Mumbai.</p>
+        </div>
+        <div class="tl-dot"><div class="dot">🌟</div></div>
+        <div class="tl-empty"></div>
       </div>
-      <form class="ai-chat-input-area" id="aiChatForm">
-        <input type="text" id="aiChatInput" placeholder="Type your question here..." required autocomplete="off"/>
-        <button type="submit" class="ai-send-btn" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
-      </form>
+
+      <div class="tl-item fi">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"><div class="dot">💼</div></div>
+        <div class="tl-card">
+          <div class="tl-yr">September 2022– March 2023</div>
+          <h3>Project Intern</h3>
+          <div class="tl-org">Defense Research Development Organization, Pune</div>
+          <p>Engineered an ML-driven Network Intrusion detection system at DRDO, leveraging data to identify and mitigate cybersecurity threats at scale.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fi">
+        <div class="tl-card">
+          <div class="tl-yr">Sept – Dec 2022</div>
+          <h3>Android Intern</h3>
+          <div class="tl-org"> Task Consultants,Pune</div>
+          <p>Designed and deployed a digital health platform for Colitis patients, automating onboarding workflows and reducing manual registration effort by 70%.</p>
+        </div>
+        <div class="tl-dot"><div class="dot">🚀</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item fi">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"><div class="dot">📡</div></div>
+        <div class="tl-card">
+          <div class="tl-yr">December 2023- June 2025</div>
+          <h3>Assistant Manager</h3>
+          <div class="tl-org">Reliance Jio Platforms Limited, Mumbai, India</div>
+          <p>Built scalable cloud and backend solutions at Reliance Jio, enabling data-driven operations and seamless resource provisioning across enterprise environments.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fi">
+        <div class="tl-card" style="border-color:#da6c2d;background:linear-gradient(100deg,#ffc583,#fff)">
+          <div class="tl-yr">Aug 2025 – May 2027</div>
+          <h3>Master of Science, Information Management</h3>
+          <div class="tl-org">University Of Illinois, Urbana Champaign</div>
+          <p>Leveraging UIUC's MSIM program to bridge engineering, data analytics, and business strategy, enabling organizations to make smarter, data-driven decisions.</p>
+        </div>
+        <div class="tl-dot"><div class="dot">🌵</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item fi">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"><div class="dot">🎓</div></div>
+        <div class="tl-card">
+          <div class="tl-yr">January 2026- Present</div>
+          <h3>Technology Consultant</h3>
+          <div class="tl-org">Business intelligence Group, Champaign</div>
+          <p>Led digital transformation of federal grant reporting by building a secure SQL-based analytics platform with backend services enabling scalable, cross-project data insights.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fi">
+        <div class="tl-card" style="border-color:#10B981;background:linear-gradient(135deg,#F0FDF4,#fff)">
+          <div class="tl-yr" style="color:#16A34A">Graduated May 2026</div>
+          <h3>Open to Opportunities</h3>
+          <div class="tl-org" style="color:#16A34A">Operations Analyst · Project Coordinator · Strategy and Ops</div>
+          <p>Ready to bring a strong foundation in data analytics, project management, and operations to a high-impact team from Day 1.</p>
+        </div>
+        <div class="tl-dot">
+          <div class="dot" style="border-color:#10B981;box-shadow:0 0 0 5px rgba(16,185,129,.15)">✨</div>
+        </div>
+        <div class="tl-empty"></div>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <script src="main.js"></script>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-hd c fi">
+      <div class="label">Skills and Tools</div>
+      <h2 class="sh">What I Bring to the Table</h2>
+      <p class="sub">A versatile toolkit spanning data analytics, project management, and operational strategy.</p>
+    </div>
+    <div class="sk-g">
+      <div class="sk-cat fi">
+        <div class="sk-hd"><div class="sk-ic">📊</div><h3>Data Analytics and Visualization</h3></div>
+        <div class="tags">
+          <span class="tag">SQL</span><span class="tag">KPI Design</span><span class="tag">Data Modeling</span>
+          <span class="tag">ETL</span><span class="tag">Excel</span><span class="tag">Power BI</span>
+          <span class="tag">Tableau</span><span class="tag">Data Storytelling</span><span class="tag">Database Designing</span><span class="tag">Data Quality</span>
+          <span class="tag">Data Warehousing</span>
+        </div>
+      </div>
+      <div class="sk-cat fi d1">
+        <div class="sk-hd"><div class="sk-ic">🗂️</div><h3>Software Engineering & Backend Development</h3></div>
+        <div class="tags">
+          <span class="tag g">Java</span><span class="tag g">Spring Boot</span><span class="tag g">REST APIs</span>
+          <span class="tag g">Microservices</span>
+          <span class="tag g">Python</span><span class="tag g">JWT and RBAC</span><span class="tag g">GitHub</span>
+          <span class="tag g">CI/CD</span><span class="tag g">Azure DevOps</span>
+          <span class="tag g">Relational Databases</span><span class="tag g">Machine Learning</span>
+        </div>
+      </div>
+      <div class="sk-cat fi d2">
+        <div class="sk-hd"><div class="sk-ic">⚙️</div><h3>Soft Skills</h3></div>
+        <div class="tags">
+          <span class="tag o">Strong Problem Solving Skills</span><span class="tag o">Stakeholder Management</span>
+          <span class="tag o">Strong Presentation Skills</span><span class="tag o">Critical & Analytical thinking</span>
+          <span class="tag o">Process Improvement</span><span class="tag o">Supply Chain</span>
+          <span class="tag o">Cross-Functional Coordination</span><span class="tag o">KPI Monitoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-hd fi">
+      <div class="label">Work Experience</div>
+      <h2 class="sh">Professional History</h2>
+      <p class="sub">Real-world impact across telecom, education, tech consulting, and international events.</p>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-card fi">
+        <div class="exp-logo">🎓</div>
+        <div>
+          <div class="exp-top">
+            <div class="exp-title">Technology Consultant</div>
+            <div class="exp-period">January 2026- Present</div>
+          </div>
+          <div class="exp-co">Business Intelligence Group,Champaign</div>
+          <ul class="exp-ul">
+            <li> Digital transformation of fragmented Excel-based grant reporting into a centralized, secure SQL-driven data platform, enabling cross-project integra
+tion and analytics-driven decision-making for high-priority federal grants</li>
+            <li>Conducted technical feasibility analysis and tool evaluation to identify optimal data storage, querying, and reporting solutions, influencing architecture
+decisions for a scalable and secure analytics platform.</li>
+<li> Engineered backend services for secure data ingestion, transformation, and querying, improving data consistency and enabling reliable cross-project
+analytics</li>
+<li>Implemented JWT-based authentication and role-based access control (RBAC) in the Java backend, ensuring secure user access and fine-grained data
+authorization across multiple stakeholders.</li>
+          </ul>
+          <div class="exp-ts">
+            <span class="tag">Project Coordination</span><span class="tag">Process Documentation</span>
+            <span class="tag g">Trello</span><span class="tag g">Lucidchart</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card fi">
+        <div class="exp-logo">📡</div>
+        <div>
+          <div class="exp-top">
+            <div class="exp-title">Software Development Engineer</div>
+            <div class="exp-period">December 2023- June 2025</div>
+          </div>
+          <div class="exp-co">Reliance Jio Platforms Limited, Mumbai, India</div>
+          <ul class="exp-ul">
+            <li> Backend developer on a cloud-native microservices platform supporting 10+ government cloud tenants, building RESTful APIs using Java,
+Spring Boot, SQL, deployed via CI/CD pipelines on Microsoft Azure DevOps and Kubernetes in Agile Environment.</li>
+            <li> Led the design and rollout of a quota management system, defining feature scope and logic across subscription, project, and organization levels,
+enabling accurate tracking of 500+ cloud resource allocations. Container Instances pipelines for paginated Ticketmaster API payloads.</li>
+<li> Developed high-performance REST APIs for enterprise executive dashboards, supporting 50+ admin users, improving operational diagnosis
+time by 20% through optimized data pipelines and secure service integration</li>
+<li>Improved API performance and reduced latency by 30% in production through query optimization, indexing, and efficient pagination strategies</li>
+<li>Collaborated with cross-functional teams (product, DevOps, frontend) to drive end-to-end delivery of backend features, translating business require
+ments into scalable technical solutions in an Agile environment.</li>
+          </ul>
+          <div class="exp-ts">
+            <span class="tag">SAP GRC / CRM</span><span class="tag o">JIRA</span>
+            <span class="tag o">SQL</span><span class="tag o">Python</span><span class="tag g">Process Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card fi">
+        <div class="exp-logo">⚡</div>
+        <div>
+          <div class="exp-top">
+            <div class="exp-title">Project Intern</div>
+            <div class="exp-period">September 2022– March. 2023</div>
+          </div>
+          <div class="exp-co">Defense Research Development Organisation,Pune</div>
+          <ul class="exp-ul">
+            <li>Conducted applied research in emerging technologies, developing a machine learning–based cybersecurity system for national defense infrastructure,
+enabling real-time threat detection and integration into security monitoring pipelines and supported test case development, debugging, and integration
+testing across development cycles.</li>
+            <li> Processed and analyzed 1M+ network packet records for training ML models and achieved 96% detection. accuracy, enabling integration into
+security monitoring pipelines.</li>
+<li>Captured and analyzed live network traffic using Wireshark, transforming raw packet data into flow-level features via CICFlowMeter to enable
+structured input for machine learning models.</li>
+<li> Designed a robust data preprocessing and feature engineering pipeline to extract key traffic characteristics (e.g., flow duration, packet rate, byte
+distribution), improving model reliability and reducing noise in large-scale network datasets.</li>
+          </ul>
+          <div class="exp-ts">
+            <span class="tag">Event Management</span><span class="tag">Stakeholder Communication</span>
+            <span class="tag g">Program Lifecycle</span><span class="tag g">Logistics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="exp-card fi">
+        <div class="exp-logo">💻</div>
+        <div>
+          <div class="exp-top">
+            <div class="exp-title">Project Assistant</div>
+            <div class="exp-period">May – Aug 2022</div>
+          </div>
+          <div class="exp-co">Exposys Data Labs, Bangalore, India</div>
+          <ul class="exp-ul">
+            <li>Coordinated end-to-end IT project planning and delivery for a client-facing web application in a 5-member cross-functional team using Confluence and Microsoft Project, delivering on schedule to 4+ stakeholders.</li>
+          </ul>
+          <div class="exp-ts">
+            <span class="tag g">Confluence</span><span class="tag g">Microsoft Project</span>
+            <span class="tag">Requirements Tracking</span><span class="tag">Risk Management</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div> -->
+</section>
+
+<!-- PROJECTS
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-hd c fi">
+      <div class="label">Projects</div>
+      <h2 class="sh">Work I'm Proud Of</h2>
+      <p class="sub">From Tableau dashboards to ERP competitive strategy and IoT hardware, spanning analytics, operations, and engineering.</p>
+    </div>
+    <div class="filter-row fi">
+      <button class="fbtn on" onclick="fp('all',this)">All</button>
+      <button class="fbtn" onclick="fp('tableau',this)">Tableau</button>
+      <button class="fbtn" onclick="fp('analytics',this)">Analytics</button>
+      <button class="fbtn" onclick="fp('strategy',this)">Strategy</button>
+      <button class="fbtn" onclick="fp('engineering',this)">Engineering</button>
+    </div>
+    <div class="proj-g" id="proj-g">
+
+      <!-- MegaMart 
+      <div class="pc fi" data-cat="tableau analytics">
+        <div class="pc-thumb has-img">
+          <img class="pc-thumb-img" src="MegaMart%20Sales%20dashboard%20(2).png" alt="MegaMart Sales Dashboard" />
+          <div class="pc-thumb-icon">🛒</div>
+          <div class="pc-thumb-label">Sales Dashboard</div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Tableau · Analytics</span><span class="pc-yr">Jun–Jul 2025</span></div>
+        <div class="pc-body">
+          <h3>Sales Performance Analysis, MegaMart</h3>
+          <p>Interactive Tableau dashboard tracking agent-wise KPIs and sales over time, with dynamic filters and prior-month comparison tools built for investor decision-making.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Target:</span><span> 72% Achievement</span></div>
+            <div class="met"><div class="met-dot"></div><span>Sales Tracked:</span><span> $1.57M+</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Tableau</span><span class="tb">SQL</span><span class="tb">Excel</span><span class="tb">KPI Design</span></div>
+          <a href="https://public.tableau.com/views/MegaMartSalesDashboard_17532174754770/MegaMartSalesdashboard" target="_blank" rel="noopener" class="pl">View Dashboard ↗</a>
+        </div>
+      </div>
+
+      <!-- ERP Strategy 
+      <div class="pc fi d1" data-cat="strategy analytics">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#1E40AF,#3B82F6)">
+          <div class="pc-thumb-icon">🏢</div>
+          <div class="pc-thumb-label">Strategy Report</div>
+          <div class="pc-dots-row">
+            <div class="pc-dot"></div><div class="pc-dot"></div><div class="pc-dot"></div>
+            <div class="pc-dot"></div><div class="pc-dot"></div>
+          </div>
+          <div class="pc-bars">
+            <div class="pc-bar" style="height:50px"></div><div class="pc-bar" style="height:95px"></div>
+            <div class="pc-bar" style="height:75px"></div><div class="pc-bar" style="height:60px"></div>
+          </div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Strategy · Research</span><span class="pc-yr">Aug–Dec 2025</span></div>
+        <div class="pc-body">
+          <h3>Strategic Analysis of ERP Industry, SAP, Oracle and Workday</h3>
+          <p>40+ page comparative framework evaluating ERP vendor competitiveness using Porter's Five Forces and VRIO, covering a $64.8B to $123.4B market opportunity.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Market Size:</span><span> $123.4B</span></div>
+            <div class="met"><div class="met-dot"></div><span>Report:</span><span> 40+ Pages</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Porter's 5 Forces</span><span class="tb">VRIO</span><span class="tb">Market Research</span></div>
+          <a href="Strategic%20Analysis%20of%20ERP%20Industry%2C%20SAP%2C%20Oracle%20and%20Workday.pdf" target="_blank" class="pl">View Paper ↗</a>
+        </div>
+      </div>
+
+      <!-- Markstrat 
+      <div class="pc fi d2" data-cat="strategy">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#7C3AED,#EC4899)">
+          <div class="pc-thumb-icon">📈</div>
+          <div class="pc-thumb-label">B2B Simulation</div>
+          <svg class="pc-line-chart" viewBox="0 0 300 100" preserveAspectRatio="none">
+            <polyline points="0,70 50,60 100,45 150,55 200,30 250,20 300,10"/>
+          </svg>
+          <div class="pc-bars">
+            <div class="pc-bar" style="height:40px"></div><div class="pc-bar" style="height:65px"></div>
+            <div class="pc-bar" style="height:85px"></div><div class="pc-bar" style="height:95px"></div>
+          </div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">B2B Strategy</span><span class="pc-yr">Aug 2024–Jan 2025</span></div>
+        <div class="pc-body">
+          <h3>B2B Market Strategy Simulation, Markstrat</h3>
+          <p>Managed a cross-functional portfolio of 5 B2B products through a competitive market simulation applying pricing optimization, competitive positioning, and distribution strategies.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Market Share:</span><span> +14%</span></div>
+            <div class="met"><div class="met-dot"></div><span>Revenue Growth:</span><span> +16%</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Competitive Analysis</span><span class="tb">Portfolio Mgmt</span><span class="tb">Pricing</span></div>
+          <span class="pl-na">Simulation</span>
+        </div>
+      </div>
+
+      <!-- GreatFit 
+      <div class="pc fi" data-cat="tableau analytics">
+        <div class="pc-thumb has-img">
+          <img class="pc-thumb-img" src="GreatFit%20Review%20Dasboard.png" alt="GreatFit Review Dashboard" />
+          <div class="pc-thumb-icon">⭐</div>
+          <div class="pc-thumb-label">Review Analytics</div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Tableau · Analytics</span><span class="pc-yr">2025</span></div>
+        <div class="pc-body">
+          <h3>GreatFit Review Analytics Dashboard</h3>
+          <p>Interactive dashboard tracking customer sentiment, product ratings, and review trends over time, enabling data-driven product and operational decisions.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Type:</span><span> Review Analytics</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Tableau</span><span class="tb">Customer Analytics</span><span class="tb">Sentiment</span></div>
+          <a href="https://public.tableau.com/views/GreatFitReviewDasboard/Dashboard1" target="_blank" rel="noopener" class="pl">View Dashboard ↗</a>
+        </div>
+      </div>
+
+      <!-- Meta Stock 
+      <div class="pc fi d1" data-cat="tableau analytics">
+        <div class="pc-thumb has-img">
+          <img class="pc-thumb-img" src="Meta%20Stock%20Dashboard%20(2).png" alt="Meta Stock Dashboard" />
+          <div class="pc-thumb-icon">📉</div>
+          <div class="pc-thumb-label">Financial Analytics</div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Tableau · Finance</span><span class="pc-yr">2025</span></div>
+        <div class="pc-body">
+          <h3>Meta Stock Performance Dashboard</h3>
+          <p>Financial analytics dashboard tracking Meta's stock performance with historical trend analysis, volume indicators, and performance benchmarking visualizations.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Type:</span><span> Financial Analytics</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Tableau</span><span class="tb">Financial Data</span><span class="tb">Time-Series</span></div>
+          <a href="https://public.tableau.com/views/MetaStockdashboard/MetaStockDashboard" target="_blank" rel="noopener" class="pl">View Dashboard ↗</a>
+        </div>
+      </div>
+
+      <!-- Olist 
+      <div class="pc fi d2" data-cat="tableau analytics">
+        <div class="pc-thumb has-img">
+          <img class="pc-thumb-img" src="Olist%20Dashboard.png" alt="Olist Dashboard" />
+          <div class="pc-thumb-icon">🛍️</div>
+          <div class="pc-thumb-label">E-Commerce Analytics</div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Tableau · E-Commerce</span><span class="pc-yr">2025</span></div>
+        <div class="pc-body">
+          <h3>Olist E-Commerce Analytics Dashboard</h3>
+          <p>Analyzed Brazilian e-commerce platform data with dashboards covering order trends, delivery performance, seller analytics, and revenue segmentation.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Type:</span><span> E-Commerce Analytics</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Tableau</span><span class="tb">E-Commerce</span><span class="tb">Supply Chain</span></div>
+          <a href="https://public.tableau.com/views/OlistDashboard_17538115861120/Dashboard1" target="_blank" rel="noopener" class="pl">View Dashboard ↗</a>
+        </div>
+      </div>
+
+      <!-- Park City 
+      <div class="pc fi" data-cat="tableau analytics">
+        <div class="pc-thumb has-img">
+          <img class="pc-thumb-img" src="Park%20City%20Dashboard.png" alt="Park City Dashboard" />
+          <div class="pc-thumb-icon">🗺️</div>
+          <div class="pc-thumb-label">Urban Analytics</div>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Tableau · Urban Analytics</span><span class="pc-yr">2025</span></div>
+        <div class="pc-body">
+          <h3>Park City Analytics Dashboard</h3>
+          <p>Geospatial and operational analytics dashboard supporting urban planning insights, visitor trend analysis, and resource allocation decision-making.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Type:</span><span> Urban Data Analytics</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">Tableau</span><span class="tb">Geospatial</span><span class="tb">Urban Planning</span></div>
+          <a href="https://public.tableau.com/views/ParkCityDashboard/Dashboard1" target="_blank" rel="noopener" class="pl">View Dashboard ↗</a>
+        </div>
+      </div>
+
+      <!-- IoT 
+      <div class="pc fi d1" data-cat="engineering">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#0284C7,#4F46E5)">
+          <div class="pc-thumb-icon">🔬</div>
+          <div class="pc-thumb-label">IoT Hardware</div>
+          <div class="pc-dots-row">
+            <div class="pc-dot"></div><div class="pc-dot"></div><div class="pc-dot"></div>
+            <div class="pc-dot"></div><div class="pc-dot"></div><div class="pc-dot"></div><div class="pc-dot"></div>
+          </div>
+          <svg class="pc-line-chart" style="opacity:.2" viewBox="0 0 300 100" preserveAspectRatio="none">
+            <polyline points="0,50 30,30 60,50 90,30 120,50 150,30 180,50 210,30 240,50 270,30 300,50"/>
+          </svg>
+        </div>
+        <div class="pc-top"><span class="pc-cat">Engineering · IoT</span><span class="pc-yr">2022–2023</span></div>
+        <div class="pc-body">
+          <h3>IoT-Based Smart Shopping Trolley</h3>
+          <p>Bachelor's capstone project. Designed an IoT-enabled smart shopping trolley with automated item detection, real-time billing, and inventory tracking using embedded systems and sensor arrays.</p>
+          <div class="pc-metrics">
+            <div class="met"><div class="met-dot"></div><span>Type:</span><span> Hardware + IoT</span></div>
+            <div class="met"><div class="met-dot"></div><span>Level:</span><span> BE Capstone</span></div>
+          </div>
+        </div>
+        <div class="pc-foot">
+          <div class="tech-row"><span class="tb">IoT</span><span class="tb">Embedded Systems</span><span class="tb">Sensors</span><span class="tb">Electronics</span></div>
+          <a href="IOT%20Based%20Smart%20Shopping%20Trolley.pdf" target="_blank" class="pl">View Paper ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+<!-- CERTIFICATIONS
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-hd c fi">
+      <div class="label">Certifications</div>
+      <h2 class="sh">Credentials and Recognition</h2>
+      <p class="sub">Validated skills across data analytics, process improvement, and technology management.</p>
+    </div>
+    <div class="cert-g">
+
+      <!-- CAPM In Progress 
+      <div class="cert-card fi" style="cursor:default">
+        <div class="cert-ph" style="background:linear-gradient(135deg,#1e40af,#4338ca);position:relative;overflow:hidden;gap:.3rem">
+          <div style="position:absolute;width:150px;height:150px;border-radius:50%;border:18px solid rgba(255,255,255,.06);top:-45px;right:-45px"></div>
+          <div style="position:absolute;width:90px;height:90px;border-radius:50%;border:12px solid rgba(255,255,255,.05);bottom:-25px;left:10px"></div>
+          <div style="position:absolute;bottom:14px;left:1.5rem;right:1.5rem;display:flex;flex-direction:column;gap:5px;opacity:.22">
+            <div style="height:6px;background:#fff;border-radius:3px;width:72%"></div>
+            <div style="height:6px;background:#fff;border-radius:3px;width:48%;margin-left:14%"></div>
+            <div style="height:6px;background:#fff;border-radius:3px;width:58%;margin-left:7%"></div>
+          </div>
+          <div style="font-size:2rem;position:relative;z-index:1">📋</div>
+          <div style="color:#fff;font-size:1.3rem;font-weight:800;letter-spacing:.05em;position:relative;z-index:1">CAPM</div>
+          <span style="color:rgba(255,255,255,.75);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:1">PMI Certification</span>
+        </div>
+        <div class="cert-body">
+          <div class="cert-progress">In Progress</div>
+          <div class="cert-iss">Udemy · Project Management</div>
+          <div class="cert-name">CAPM Certification Training &amp; Exam Prep</div>
+          <div class="cert-dt">PMI Certified Associate in Project Management · 2025–Present</div>
+        </div>
+      </div>
+
+      <!-- Lean Six Sigma with actual image 
+      <div class="cert-card fi" onclick="lb('Lean%20Six%20Sigma%20Certificate.png')">
+        <img src="Lean%20Six%20Sigma%20Certificate.png" class="cert-img" alt="Lean Six Sigma Green Belt Certificate" />
+        <div class="cert-body">
+          <div class="cert-iss">IASSC · Process Improvement</div>
+          <div class="cert-name">Lean Six Sigma Green Belt</div>
+          <div class="cert-dt">Quality Management and Process Optimization · Click to enlarge</div>
+        </div>
+      </div>
+
+      <!-- Tableau Udemy 
+      <div class="cert-card fi d1" onclick="lb('Tableau%20certificate.png')">
+        <img src="Tableau%20certificate.png" class="cert-img" alt="Tableau Certificate" />
+        <div class="cert-body">
+          <div class="cert-iss">Udemy · Data Analytics</div>
+          <div class="cert-name">Hands-On Masterclass in Data Analytics with Tableau</div>
+          <div class="cert-dt">Aug 7, 2025 · 9.5 Hours · Click to enlarge</div>
+        </div>
+      </div>
+
+      <!-- Google GenAI 
+      <div class="cert-card fi d2" style="cursor:default">
+        <div class="cert-ph" style="background:linear-gradient(135deg,#0f172a,#1e1b4b);position:relative;overflow:hidden;gap:.3rem">
+          <div style="position:absolute;inset:0;z-index:0">
+            <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:#818cf8;opacity:.55;top:18%;left:14%"></div>
+            <div style="position:absolute;width:4px;height:4px;border-radius:50%;background:#34d399;opacity:.5;top:28%;left:72%"></div>
+            <div style="position:absolute;width:5px;height:5px;border-radius:50%;background:#60a5fa;opacity:.55;top:66%;left:22%"></div>
+            <div style="position:absolute;width:4px;height:4px;border-radius:50%;background:#f472b6;opacity:.5;top:54%;left:78%"></div>
+            <div style="position:absolute;width:5px;height:5px;border-radius:50%;background:#a78bfa;opacity:.5;top:14%;left:56%"></div>
+            <div style="position:absolute;width:4px;height:4px;border-radius:50%;background:#34d399;opacity:.4;top:76%;left:58%"></div>
+            <div style="position:absolute;width:3px;height:3px;border-radius:50%;background:#60a5fa;opacity:.45;top:42%;left:38%"></div>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.15">
+              <line x1="14%" y1="18%" x2="38%" y2="42%" stroke="#818cf8" stroke-width="1"/>
+              <line x1="38%" y1="42%" x2="72%" y2="28%" stroke="#60a5fa" stroke-width="1"/>
+              <line x1="22%" y1="66%" x2="38%" y2="42%" stroke="#34d399" stroke-width="1"/>
+              <line x1="56%" y1="14%" x2="72%" y2="28%" stroke="#a78bfa" stroke-width="1"/>
+              <line x1="58%" y1="76%" x2="78%" y2="54%" stroke="#f472b6" stroke-width="1"/>
+              <line x1="22%" y1="66%" x2="58%" y2="76%" stroke="#60a5fa" stroke-width="1"/>
+            </svg>
+          </div>
+          <div style="font-size:2rem;position:relative;z-index:1">🤖</div>
+          <div style="color:#fff;font-size:1.2rem;font-weight:800;letter-spacing:.03em;position:relative;z-index:1">Gen AI</div>
+          <span style="color:rgba(255,255,255,.65);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:1">Google Cloud</span>
+        </div>
+        <div class="cert-body">
+          <div class="cert-iss">Google · Generative AI</div>
+          <div class="cert-name">Introduction to Generative AI</div>
+          <div class="cert-dt">Google Cloud Skills Boost</div>
+        </div>
+      </div>
+
+      <!-- IEEE Media Mentor 
+      <div class="cert-card fi" onclick="lb('Media%20Mentor%20certificate.jpeg')">
+        <img src="Media%20Mentor%20certificate.jpeg" class="cert-img" alt="IEEE Certificate of Appreciation, Media Mentor" />
+        <div class="cert-body">
+          <div class="cert-iss">IEEE SIESGST · Bombay Section</div>
+          <div class="cert-name">Certificate of Appreciation, Media Mentor</div>
+          <div class="cert-dt">2022–2023 Executive Committee · Click to enlarge</div>
+        </div>
+      </div>
+
+      <!-- IEEE WiE 
+      <div class="cert-card fi d1" onclick="lb('Wie%20Certificate.jpeg')">
+        <img src="Wie%20Certificate.jpeg" class="cert-img" alt="IEEE WiE Certificate" />
+        <div class="cert-body">
+          <div class="cert-iss">IEEE WiE · SIESGST</div>
+          <div class="cert-name">Certificate of Appreciation, STEM Volunteer</div>
+          <div class="cert-dt">March 2022 · WiE STEM Lectures · Click to enlarge</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEERING 
+<section id="volunteering">
+  <div class="wrap">
+    <div class="sec-hd c fi">
+      <div class="label">Giving Back</div>
+      <h2 class="sh">Volunteering and Leadership</h2>
+      <p class="sub">From STEM outreach in Mumbai schools to leading IEEE events, community has always been at the core.</p>
+    </div>
+    <div class="vol-g">
+
+      <div class="vol-card fi">
+        <img src="Women%20in%20TEM.jpeg" alt="Women in TEM Networking Event at ASU" class="vol-img" />
+        <div class="vol-body">
+          <div class="vol-role">Volunteer · Present</div>
+          <h3>Women in TEM, Arizona State University</h3>
+          <p>Supporting technology and engineering management professionals at ASU through event coordination, networking, and community initiatives. Attended and helped organize events like "Networking Beyond LinkedIn," contributing to a more inclusive STEM environment.</p>
+          <div class="vol-per">📅 Aug 2024 – Present</div>
+        </div>
+      </div>
+
+      <div class="vol-card fi d1">
+        <img src="img5.jpeg" alt="IEEE SIESGST Event" class="vol-img" />
+        <div class="vol-body">
+          <div class="vol-role">Publicity and Networking Lead</div>
+          <h3>IEEE Bombay Section SAC</h3>
+          <p>Led publicity and networking for the IEEE SIESGST branch, serving as technical volunteer for IEEE Asia Pacific Region 10 Symposium (TENSYMP 2022) and managing executive committee media communications.</p>
+          <div class="vol-per">📅 Jan 2022 – Dec 2024</div>
+        </div>
+      </div>
+
+      <div class="vol-card fi d2">
+        <img src="img4.jpeg" alt="IEEE STEM Lectures" class="vol-img" />
+        <div class="vol-body">
+          <div class="vol-role">STEM Outreach Volunteer</div>
+          <h3>IEEE WiE STEM Lectures</h3>
+          <p>Volunteered for WiE SIESGST's STEM Lectures at schools across Navi Mumbai, delivering science and technology education to inspire the next generation of engineers.</p>
+          <div class="vol-per">📅 March 2022</div>
+        </div>
+      </div>
+
+    </div>
+
+    Photo Gallery
+    <div class="fi" style="margin-top: 1rem;">
+      <div class="label" style="margin-bottom:1rem; margin-top:3rem">Moments in the Field</div>
+      <div class="gallery wide">
+        <div><img src="img8.jpeg" class="gimg" alt="Krishnaveni at ASU" onclick="lb('img8.jpeg')" /></div>
+        <div><img src="img7.jpeg" class="gimg" alt="ASU classroom with professor" onclick="lb('img7.jpeg')" /></div>
+        <div><img src="img6.jpeg" class="gimg" alt="ASU class group photo" onclick="lb('img6.jpeg')" /></div>
+        <div><img src="Women%20in%20TEM.jpeg" class="gimg" alt="Women in TEM event" onclick="lb('Women%20in%20TEM.jpeg')" /></div>
+        <div><img src="img4.jpeg" class="gimg" alt="IEEE STEM Outreach" onclick="lb('img4.jpeg')" /></div>
+        <div><img src="img3.jpeg" class="gimg" alt="STEM Classroom" onclick="lb('img3.jpeg')" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="con-g">
+      <div class="fi">
+        <div class="label">Get In Touch</div>
+        <h2 class="sh">Let's Work Together</h2>
+        <!-- <p class="sub">I'm actively seeking roles in Operations Analysis, Project Coordination, and Strategy and Operations. Let's explore how I can contribute to your team.</p> -->
+        <div class="con-links">
+          <a href="mailto:chaitanyanirantar20@gmail.com" class="con-link">
+            <div class="con-link-ic">✉️</div>
+            <div class="con-link-t"><strong>Email</strong><span>chaitanyanirantar20@gmail.com</span></div>
+          </a>
+          <a href="https://www.linkedin.com/in/chaitanya-nirantar-0918841b3/" target="_blank" rel="noopener" class="con-link">
+            <div class="con-link-ic">💼</div>
+            <div class="con-link-t"><strong>LinkedIn</strong><span>https://www.linkedin.com/in/chaitanya-nirantar-0918841b3/</span></div>
+          </a>
+          <a href="Chaitanya_s_Resume_v1 (2).pdf" download class="con-link">
+            <div class="con-link-ic">📄</div>
+            <div class="con-link-t"><strong>Resume</strong><span>Download PDF</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="cta-box fi d2">
+        <div class="cta-hdg">Ready to make an<br><em>impact together?</em></div>
+        <p class="cta-sub">Persuing Master's In information Management, Champaign,IL  · Open to Relocate<br></p>
+        <a href="mailto:chaitanyanirantar20@gmail.com" class="btn" style="background:#fff;color:#1E293B;display:inline-flex;margin:0 auto">
+          ✉️ Say Hello
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Chaitanya Nirantar &nbsp;·&nbsp; Portfolio built with HTML, CSS and JS &nbsp;·&nbsp; Champaign,IL</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lbox" onclick="closelb()">
+  <button class="lb-close" onclick="closelb()">✕</button>
+  <img id="lbox-img" src="" alt="" onclick="event.stopPropagation()" />
+</div>
+
+<!-- Scroll to top -->
+<button class="st" id="st" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+const secs = document.querySelectorAll('section[id]');
+const nls  = document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  secs.forEach(s => {
+    const top = s.offsetTop - 90;
+    if (y >= top && y < top + s.offsetHeight) {
+      nls.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + s.id) a.classList.add('active');
+      });
+    }
+  });
+  document.getElementById('st').classList.toggle('on', y > 400);
+});
+
+function toggleNav() {
+  document.getElementById('navlinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('navlinks').classList.remove('open'))
+);
+
+function fp(cat, btn) {
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#proj-g .pc').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat.includes(cat)) ? '' : 'none';
+  });
+}
+
+function lb(src) {
+  document.getElementById('lbox-img').src = decodeURIComponent(src);
+  document.getElementById('lbox').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closelb() {
+  document.getElementById('lbox').classList.remove('on');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closelb(); });
+
+// Hero cursor glow
+(function() {
+  const hero = document.getElementById('hero');
+  const g1 = document.getElementById('hg1');
+  const g2 = document.getElementById('hg2');
+  if (!hero || !g1 || !g2) return;
+  let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+  let x1 = tx, y1 = ty, x2 = tx, y2 = ty;
+  g1.style.left = tx + 'px'; g1.style.top = ty + 'px';
+  g2.style.left = tx + 'px'; g2.style.top = ty + 'px';
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect();
+    tx = e.clientX - r.left; ty = e.clientY - r.top;
+  });
+  (function tick() {
+    x1 += (tx - x1) * 0.055; y1 += (ty - y1) * 0.055;
+    x2 += (tx - x2) * 0.11;  y2 += (ty - y2) * 0.11;
+    g1.style.left = x1 + 'px'; g1.style.top = y1 + 'px';
+    g2.style.left = x2 + 'px'; g2.style.top = y2 + 'px';
+    requestAnimationFrame(tick);
+  })();
+})();
+
+// Custom cursor (desktop only)
+(function() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const dot = document.getElementById('cdot');
+  const ring = document.getElementById('cring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    dot.classList.add('cur-on'); ring.classList.add('cur-on');
+  });
+  document.addEventListener('mouseleave', () => {
+    dot.classList.remove('cur-on'); ring.classList.remove('cur-on');
+  });
+
+  (function tick() {
+    rx += (mx - rx) * 0.1;
+    ry += (my - ry) * 0.1;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(tick);
+  })();
+
+  document.querySelectorAll('a, button, .fbtn, .pc, .cert-card, .vol-card, .exp-card, .tl-card, .con-link').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('cur-hov'); ring.classList.add('cur-hov'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('cur-hov'); ring.classList.remove('cur-hov'); });
+  });
+})();
+
+function animateCount(el) {
+  const isDecimal = el.dataset.decimal === 'true';
+  const target = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  const dur = 1800;
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = isDecimal
+      ? (ease * target).toFixed(1)
+      : Math.floor(ease * target) + (p >= 1 ? suffix : '');
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(animateCount);
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+const hs = document.querySelector('.hero-stats');
+if (hs) statsObs.observe(hs);
+</script>
 </body>
 </html>
