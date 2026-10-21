@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chaitanya Nirantar — Data engineering and backend</title>
-  <meta name="description" content="Chaitanya Nirantar builds data platforms and backends. MS Information Management at UIUC, 4.0 GPA, graduating May 2027. Open to data engineering, backend, and applied ML.">
-  <meta property="og:title" content="Chaitanya Nirantar — Data engineering and backend">
-  <meta property="og:description" content="PostgreSQL and PostGIS at Illinois Natural History Survey. Java backends at Jio. Live Tableau dashboards. Graduating May 2027, open to relocate.">
+  <title>Chaitanya Nirantar — Data engineering and analytics</title>
+  <meta name="description" content="Chaitanya Rajesh Nirantar. MS Information Management at UIUC, 4.0 GPA, graduating May 2027. Data engineering, warehousing, Power BI, and Tableau.">
+  <meta property="og:title" content="Chaitanya Nirantar — Data engineering and analytics">
+  <meta property="og:description" content="60+ table ecological database, Databricks medallion pipeline on 100K+ records, and SQL platforms for grant reporting. Graduating May 2027.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaitanyanirantar.github.io/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,9 +34,9 @@
       <div>
         <p class="kicker">Available · Graduating May 2027</p>
         <h1>Chaitanya<br><em>Nirantar</em></h1>
-        <p class="lede">I build the pipelines, models, and dashboards that turn messy operations into decisions a team can trust. <em>Data engineering, analytics, and backend.</em></p>
+        <p class="lede">I turn fragmented files and operational systems into warehouses, pipelines, and the dashboards a team actually opens. <em>Data engineering and analytics. MS Information Management, UIUC.</em></p>
         <div class="actions">
-          <a class="btn btn-primary" href="mailto:chaitanyanirantar20@gmail.com?subject=Role%20for%20Chaitanya%20Nirantar">Email me about a role</a>
+          <a class="btn btn-primary" href="mailto:cn32@illinois.edu?subject=Role%20for%20Chaitanya%20Nirantar">Email me about a role</a>
           <a class="btn btn-ghost" href="#work">See the work</a>
         </div>
         <p class="meta">
@@ -56,63 +56,47 @@
 
     <div class="proof" aria-label="Selected results">
       <article>
-        <b>4.0</b>
-        <p>GPA in the MS Information Management program at UIUC.</p>
+        <b>60+</b>
+        <p>Normalized tables for 50+ years of ecological monitoring data, across 7+ scientific domains.</p>
       </article>
       <article>
         <b>−30%</b>
-        <p>API latency in production at Reliance Jio, after indexing and pagination.</p>
+        <p>Query time on the Jio platform, after indexing, pagination, and tighter SQL.</p>
       </article>
       <article>
-        <b>10+</b>
-        <p>Government cloud tenants on the microservices platform I built against.</p>
+        <b>100K+</b>
+        <p>Lifestyle records through a Databricks medallion pipeline, Bronze to Gold.</p>
       </article>
       <article>
-        <b>96%</b>
-        <p>Detection accuracy on 1M+ network packets, DRDO research internship.</p>
+        <b>−60%</b>
+        <p>Manual processing on a UIUC client grant platform, after Excel moved into SQL.</p>
       </article>
     </div>
 
     <section id="work">
       <div class="section-h">
         <h2>Selected work</h2>
-        <p>Two current roles, then the production backend and research that came before them.</p>
+        <p>The roles on the data engineering resume, with the modeling, the pipelines, and the numbers written out.</p>
       </div>
       <div class="work">
         <article class="job current">
           <img src="inhs_logo.jpeg" alt="">
           <div>
             <header>
-              <h3>Aquatic Ecology Database Developer</h3>
+              <h3>Data Intern</h3>
               <span class="when">June 2026 – Present</span>
             </header>
-            <p class="org">Illinois Natural History Survey, Prairie Research Institute, UIUC</p>
+            <p class="org">Illinois Natural History Survey, Prairie Research Institute · Champaign</p>
             <ul>
-              <li>Architecting a relational database past 70 tables for decades of fisheries, water-quality, vegetation, mussel, and telemetry data, keeping legacy identifiers beside surrogate keys.</li>
-              <li>Designing normalized PostgreSQL and PostGIS schemas so programs can trace samples and analyze them together.</li>
-              <li>Building Python and R ETL with automated QA/QC, plus R Shiny and backend data access for ecologists and field researchers.</li>
+              <li>Designed and built a 60+ table normalized relational database that integrates 50+ years of ecological monitoring data across 7+ scientific domains. The model holds the spatial hierarchy and the sampling relationships, from fisheries, water quality, vegetation, and mussels through telemetry at the Illinois River Biological Station.</li>
+              <li>Chose PostgreSQL and PostGIS so a site, a gear type, and a repeat visit live in one queryable structure instead of a stack of program spreadsheets. Legacy field identifiers stay beside surrogate keys, which is what makes a row traceable back to the original sample.</li>
+              <li>Developed Python and SQL ETL pipelines plus QA/QC workflows that ingest, clean, transform, and validate the biological datasets. A bad load is caught before it becomes the official table, and the metadata is documented with the pipeline so the program can govern the data and reproduce a result later.</li>
+              <li>Standardized codes and units that had drifted across decades of collection, which is the unglamorous part of making a cross-program analysis possible at all.</li>
+              <li>Built 3+ interactive dashboards for the long-term monitoring program, including R Shiny views. Researchers use them to track species and habitat trends and to brief resource decisions, instead of rebuilding the chart from the raw extract every time.</li>
+              <li>Sat with ecologists and field crews to turn a sampling protocol into tables and data products they will still recognize next field season.</li>
             </ul>
             <div class="tags">
-              <span>PostgreSQL</span><span>PostGIS</span><span>SQL Server</span><span>Python</span><span>R</span><span>ETL</span><span>R Shiny</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="job current">
-          <img src="big_logo.jpg" alt="">
-          <div>
-            <header>
-              <h3>Technology Consultant</h3>
-              <span class="when">January 2026 – Present</span>
-            </header>
-            <p class="org">Business Intelligence Group, Champaign</p>
-            <ul>
-              <li>Replacing fragmented Excel grant reporting with a centralized SQL platform for high-priority federal grants.</li>
-              <li>Ran feasibility and tool evaluation for storage, querying, and reporting, then shaped the architecture.</li>
-              <li>Engineered Java services for ingestion and querying, with JWT authentication and role-based access across stakeholders.</li>
-            </ul>
-            <div class="tags">
-              <span>SQL</span><span>Java</span><span>JWT</span><span>RBAC</span><span>Data modeling</span>
+              <span>PostgreSQL</span><span>PostGIS</span><span>Python</span><span>SQL</span><span>ETL</span><span>Data quality</span><span>R Shiny</span>
             </div>
           </div>
         </article>
@@ -122,20 +106,24 @@
           <div>
             <header>
               <h3>Software Development Engineer</h3>
-              <span class="when">December 2023 – June 2025</span>
+              <span class="when">Dec 2023 – Jun 2025</span>
             </header>
-            <p class="org">Reliance Jio Platforms Limited, Mumbai</p>
+            <p class="org">Reliance Jio Platforms Limited · Navi Mumbai</p>
             <ul>
-              <li>Backend developer on a cloud-native microservices platform for 10+ government cloud tenants, using Java, Spring Boot, and SQL, shipped through CI/CD on Azure DevOps and Kubernetes.</li>
-              <li>Designed a quota system across subscription, project, and organization, tracking 500+ cloud resource allocations.</li>
-              <li>Built REST APIs for executive dashboards used by 50+ admins, cutting diagnosis time by 20%. Query optimization, indexing, and pagination reduced production API latency by 30%.</li>
+              <li>Developed SQL-backed data models and REST APIs on a cloud-native microservices platform supporting 10+ government cloud tenants. Services are Java and Spring Boot. Releases go out through CI/CD on Azure DevOps, onto Kubernetes.</li>
+              <li>The data model had to survive more than one tenant’s vocabulary. Shared dimensions, tenant-scoped facts, and APIs that return the same grain to every dashboard.</li>
+              <li>Led the quota-management design across subscription, project, and organization. That system is what makes 500+ cloud resource allocations countable instead of tribal knowledge.</li>
+              <li>Built the analytics views and SQL models behind the executive dashboards. Operations used them to see where a tenant was stuck, and issue diagnosis time fell by 20%.</li>
+              <li>Improved query performance by 30% with indexing, pagination, and query redesign. The dashboards were only as fast as the SQL under them, so the optimization work was the product work.</li>
+              <li>Worked in Agile with product, DevOps, and frontend, and turned the operational question into a contract the API and the dashboard could both keep.</li>
             </ul>
             <div class="tags">
-              <span>Java</span><span>Spring Boot</span><span>SQL</span><span>Kubernetes</span><span>Azure DevOps</span><span>REST</span>
+              <span>Java</span><span>Spring Boot</span><span>SQL</span><span>REST</span><span>Azure DevOps</span><span>Kubernetes</span><span>CI/CD</span><span>Jira</span>
             </div>
           </div>
         </article>
 
+        <p class="kicker earlier">Earlier</p>
         <article class="job">
           <img src="drdo_logo.png" alt="">
           <div>
@@ -143,14 +131,15 @@
               <h3>Project Intern</h3>
               <span class="when">September 2022 – March 2023</span>
             </header>
-            <p class="org">Defence Research and Development Organisation, Pune</p>
+            <p class="org">Defence Research and Development Organisation · Pune</p>
             <ul>
-              <li>Built a machine-learning network intrusion detection system for security monitoring.</li>
-              <li>Processed 1M+ packet records and reached 96% detection accuracy.</li>
-              <li>Captured live traffic in Wireshark, turned it into flow features with CICFlowMeter, and engineered signals such as flow duration, packet rate, and byte distribution.</li>
+              <li>Built a machine-learning intrusion detection system aimed at live security monitoring, not a notebook that stopped at a leaderboard.</li>
+              <li>Processed and labeled 1M+ network packet records and reached 96% detection accuracy in the project evaluation.</li>
+              <li>Captured traffic in Wireshark and turned the raw packets into flow records with CICFlowMeter, so the model saw connections instead of a hex dump.</li>
+              <li>Engineered the features that actually moved the model: flow duration, packet rate, and byte distribution, then cut the noise that was drowning the signal in a dataset that size.</li>
             </ul>
             <div class="tags">
-              <span>Machine learning</span><span>Wireshark</span><span>CICFlowMeter</span><span>Python</span>
+              <span>Machine learning</span><span>Python</span><span>Wireshark</span><span>CICFlowMeter</span><span>Feature engineering</span>
             </div>
           </div>
         </article>
@@ -162,10 +151,10 @@
               <h3>Android Intern</h3>
               <span class="when">September – December 2022</span>
             </header>
-            <p class="org">Task Consultants, Pune</p>
+            <p class="org">Task Consultants · Pune</p>
             <ul>
-              <li>Designed and deployed a digital health platform for colitis patients.</li>
-              <li>Automated onboarding and cut manual registration effort by 70%.</li>
+              <li>Designed and shipped a digital health platform for colitis patients, covering the path from first registration to an onboarded record.</li>
+              <li>Automated the onboarding steps that staff had been doing by hand, and cut manual registration effort by 70%.</li>
             </ul>
             <div class="tags">
               <span>Android</span><span>Healthcare</span><span>Workflow automation</span>
@@ -178,30 +167,46 @@
     <section class="projects" id="projects">
       <div class="section-h">
         <h2>Work you can open</h2>
-        <p>Public data projects on GitHub, then the Tableau workbooks. Each card leaves this site.</p>
+        <p>The consulting platform and the Databricks pipeline from the resume, then the public code and the Tableau workbooks.</p>
       </div>
       <div class="grid">
-        <a class="card feature" href="https://github.com/ChaitanyaNirantar/DataHub-Console" target="_blank" rel="noopener noreferrer">
+        <article class="card feature">
+          <div>
+            <small>UIUC client project · SQL · Power BI</small>
+            <h3>Grant data management and BI</h3>
+            <ul>
+              <li>Built a centralized SQL platform and a web data-entry system for a client consulting project. Fifty-plus fragmented Excel files, across 9+ grant projects and 25+ stakeholders, landed in one normalized model.</li>
+              <li>Wrote the ETL and the validation that turn those workbooks into analysis-ready tables. Manual data processing dropped by 60%, and the reports stopped depending on whoever last touched the spreadsheet.</li>
+              <li>Created 5+ Power BI dashboards on SQL, DAX, and a dimensional model. Ten-plus grant datasets refresh into KPI views that 20+ stakeholders use to watch performance, spot a trend, and make the next decision from the same number.</li>
+            </ul>
+          </div>
+          <span class="go">Client project · details on request</span>
+        </article>
+        <a class="card feature" href="https://github.com/ChaitanyaNirantar/Health-and-Fitness-Dashboard" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>University of Illinois · Databricks · Power BI</small>
+            <h3>Lifestyle Balance Analytics</h3>
+            <ul>
+              <li>Built an end-to-end ETL pipeline over 100K+ lifestyle and wellness records in Databricks, using a medallion layout. Bronze keeps the raw ingest, Silver cleans and conforms it, Gold holds the aggregates a report can trust.</li>
+              <li>Connected the Gold tables to Power BI and built interactive KPI dashboards with an automated refresh, so trend and behavior analysis does not start with a manual export.</li>
+              <li>The published workbook covers workouts, nutrition, and activity: Train Smarter, Eat Better, and Diet Explorer.</li>
+            </ul>
+          </div>
+          <span class="go">Open the Power BI repo →</span>
+        </a>
+        <a class="card" href="https://github.com/ChaitanyaNirantar/DataHub-Console" target="_blank" rel="noopener noreferrer">
           <div>
             <small>Python · FastAPI · SQLite</small>
             <h3>DataHub Console</h3>
-            <p>A research console that pulls live GitHub repository data, validates every record, and quarantines the ones that fail. The catalog, null rates, and freshness are computed from the loaded table. Ask a question in English and an LLM writes SQL. A read-only connection and a SELECT-only guard are what actually run it.</p>
+            <p>Pulls live GitHub repository data, validates every record, and quarantines the failures with a reason. The catalog, null rates, and freshness are computed from the loaded table. Ask in English and Gemini writes a SELECT. A read-only connection is what runs it.</p>
           </div>
           <span class="go">Open the code →</span>
         </a>
-        <a class="card" href="https://github.com/ChaitanyaNirantar/Health-and-Fitness-Dashboard" target="_blank" rel="noopener noreferrer">
-          <div>
-            <small>Power BI · 2025</small>
-            <h3>Lifestyle Balance Analytics</h3>
-            <p>A Power BI report on workouts, nutrition, and activity. Three views: Train Smarter, Eat Better, and Diet Explorer. The workbook is in the repo.</p>
-          </div>
-          <span class="go">Open the workbook →</span>
-        </a>
         <a class="card" href="https://iirer-frontend.vercel.app" target="_blank" rel="noopener noreferrer">
           <div>
-            <small>Java · React · MySQL</small>
+            <small>Java · React · MySQL · Live</small>
             <h3>IIRER case management</h3>
-            <p>A live app for vocational rehabilitation workflows: signup, JWT login, customer search, and VR, employment, and closure forms. Spring Boot on Railway, React on Vercel.</p>
+            <p>A deployed data-entry app for vocational rehabilitation: signup, JWT login, customer search, and VR, employment, and closure forms. Spring Boot on Railway, React on Vercel.</p>
           </div>
           <span class="go">Open the app →</span>
         </a>
@@ -259,54 +264,57 @@
     <section id="path">
       <div class="section-h">
         <h2>The path</h2>
-        <p>Computer engineering in Pune, production software in Mumbai, then a data and strategy degree in Illinois.</p>
+        <p>Computer engineering in Pune, production data services in Navi Mumbai, then the information management degree in Champaign.</p>
       </div>
       <div class="path">
         <time>2019 – 2023</time>
         <article>
           <h3>BE, Computer Engineering</h3>
-          <p>Savitribai Phule Pune University. GPA 8.69/10. Capstone: an IoT shopping trolley with automated item detection and real-time billing.</p>
-        </article>
-        <time>2022 – 2023</time>
-        <article>
-          <h3>Research and product internships</h3>
-          <p>DRDO intrusion detection, then a digital health app at Task Consultants. Editorial head for the Association of Computer Engineering Students and IEEE SIESGST, and STEM outreach with GDSC in Navi Mumbai schools.</p>
+          <p>Savitribai Phule Pune University. GPA 8.69/10. Coursework in data structures and algorithms, software engineering, machine learning, and database management.</p>
         </article>
         <time>2023 – 2025</time>
         <article>
           <h3>Software Development Engineer, Jio</h3>
-          <p>Eighteen months on government cloud backends in Mumbai: quotas, executive dashboards, and faster APIs.</p>
+          <p>Navi Mumbai. SQL models, REST APIs, and executive dashboards for 10+ government cloud tenants.</p>
         </article>
         <time>2025 – 2027</time>
         <article>
           <h3>MS, Information Management, UIUC</h3>
-          <p>August 2025 – May 2027. 4.0 GPA. Bridging software, analytics, and how an organization actually uses the data. A 40-page ERP strategy paper on SAP, Oracle, and Workday is available on request.</p>
+          <p>August 2025 – May 2027. GPA 4.0/4.0. Coursework in data engineering and analytics, data warehousing, and cloud data management and generative AI.</p>
         </article>
         <time>Now</time>
         <article>
           <h3>Open for May 2027</h3>
-          <p>Data engineering, data analytics, and backend. Champaign today. Willing to relocate.</p>
+          <p>Data engineering and analytics. Champaign today. Willing to relocate.</p>
         </article>
       </div>
     </section>
 
     <section id="skills">
       <div class="section-h">
-        <h2>How I work</h2>
-        <p>The same set behind the data engineering work, the analyst dashboards, and the services.</p>
+        <h2>Technical skills</h2>
+        <p>The set on the resume. The work above is where each group shows up.</p>
       </div>
       <div class="skills">
         <article>
           <h3>Data engineering</h3>
-          <p>Python, SQL, PostgreSQL, PostGIS, SQL Server, MySQL, and SQLite. ETL with validation and quarantine, schema design, and R when the researchers already live there. FastAPI for the catalog and the ask-the-data API.</p>
+          <p>ETL and ELT, pipelines, integration, modeling, warehousing, cleaning, validation, quality, and governance. Databricks is the lakehouse for the 100K-row lifestyle pipeline.</p>
         </article>
         <article>
-          <h3>Analytics</h3>
-          <p>Tableau, Power BI, Excel, and SQL for the question behind the chart. KPI design, time series, geospatial views, and the habit of showing the number and the grain it was counted at.</p>
+          <h3>Analytics and BI</h3>
+          <p>Power BI, Tableau, DAX, Power Query, and Excel. KPI reporting, dashboard development, trend analysis, and a story a stakeholder can act on.</p>
         </article>
         <article>
-          <h3>Backend and models</h3>
-          <p>Java, Spring Boot, React, REST, JWT, Kubernetes, and Azure DevOps. Detection models from the DRDO internship. For DataHub, an LLM proposes SQL and a read-only guard is what runs it.</p>
+          <h3>Programming</h3>
+          <p>Python and SQL for the pipelines, R with the research teams, Java for the services.</p>
+        </article>
+        <article>
+          <h3>Databases</h3>
+          <p>PostgreSQL and MySQL. Relational design, normalization, and query optimization. That is the 60-table survey model and the 30% faster queries at Jio.</p>
+        </article>
+        <article>
+          <h3>Engineering</h3>
+          <p>REST APIs, Spring Boot, Git and GitHub, Azure DevOps, Kubernetes, CI/CD, Jira, and Agile delivery with product and frontend in the room.</p>
         </article>
       </div>
     </section>
@@ -317,16 +325,17 @@
         <h2>Already shipped the hard part.</h2>
       </div>
       <div>
-        <a class="big" href="mailto:chaitanyanirantar20@gmail.com?subject=Role%20for%20Chaitanya%20Nirantar">chaitanyanirantar20@gmail.com</a>
+        <a class="big" href="mailto:cn32@illinois.edu?subject=Role%20for%20Chaitanya%20Nirantar">cn32@illinois.edu</a>
+        <a class="big" href="tel:+12177666301">(217) 766-6301</a>
         <a class="big" href="https://www.linkedin.com/in/chaitanya-nirantar-0918841b3/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="big" href="https://github.com/ChaitanyaNirantar" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="big" href="mailto:chaitanyanirantar20@gmail.com?subject=Resume%20request%20%E2%80%94%20Chaitanya%20Nirantar">Resume on request</a>
+        <a class="big" href="mailto:cn32@illinois.edu?subject=Resume%20request%20%E2%80%94%20Chaitanya%20Nirantar">Resume on request</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Chaitanya Nirantar · Champaign, IL · Open to relocate · Graduating May 2027</p>
+    <p>© 2026 Chaitanya Rajesh Nirantar · Champaign, IL · Open to relocate · Graduating May 2027</p>
   </footer>
   <script src="site.js"></script>
 </body>
