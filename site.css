@@ -249,6 +249,14 @@ h2 {
   font-size: 0.8rem;
   background: #fff;
 }
+.contrib {
+  display: inline-flex;
+  margin-top: 0.95rem;
+  color: var(--signal-deep);
+  font-weight: 650;
+  text-decoration: none;
+}
+.contrib:hover { text-decoration: underline; }
 
 .projects {
   background: var(--ink);
