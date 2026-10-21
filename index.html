@@ -34,7 +34,7 @@
       <div>
         <p class="kicker">Available · Graduating May 2027</p>
         <h1>Chaitanya<br><em>Nirantar</em></h1>
-        <p class="lede">I build the databases, APIs, and dashboards that turn messy operations into decisions a team can trust. <em>Data engineering, backend, and applied ML.</em></p>
+        <p class="lede">I build the pipelines, models, and dashboards that turn messy operations into decisions a team can trust. <em>Data engineering, analytics, and backend.</em></p>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:chaitanyanirantar20@gmail.com?subject=Role%20for%20Chaitanya%20Nirantar">Email me about a role</a>
           <a class="btn btn-ghost" href="#work">See the work</a>
@@ -88,12 +88,12 @@
             </header>
             <p class="org">Illinois Natural History Survey, Prairie Research Institute, UIUC</p>
             <ul>
-              <li>Architecting a central relational database for decades of fisheries, water-quality, vegetation, mussel, and telemetry data from the Illinois River Biological Station.</li>
+              <li>Architecting a relational database past 70 tables for decades of fisheries, water-quality, vegetation, mussel, and telemetry data, keeping legacy identifiers beside surrogate keys.</li>
               <li>Designing normalized PostgreSQL and PostGIS schemas so programs can trace samples and analyze them together.</li>
               <li>Building Python and R ETL with automated QA/QC, plus R Shiny and backend data access for ecologists and field researchers.</li>
             </ul>
             <div class="tags">
-              <span>PostgreSQL</span><span>PostGIS</span><span>Python</span><span>R</span><span>ETL</span><span>R Shiny</span>
+              <span>PostgreSQL</span><span>PostGIS</span><span>SQL Server</span><span>Python</span><span>R</span><span>ETL</span><span>R Shiny</span>
             </div>
           </div>
         </article>
@@ -178,9 +178,33 @@
     <section class="projects" id="projects">
       <div class="section-h">
         <h2>Work you can open</h2>
-        <p>Live Tableau dashboards from 2025. Each link leaves this site and opens the public workbook.</p>
+        <p>Public data projects on GitHub, then the Tableau workbooks. Each card leaves this site.</p>
       </div>
       <div class="grid">
+        <a class="card feature" href="https://github.com/ChaitanyaNirantar/DataHub-Console" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Python · FastAPI · SQLite</small>
+            <h3>DataHub Console</h3>
+            <p>A research console that pulls live GitHub repository data, validates every record, and quarantines the ones that fail. The catalog, null rates, and freshness are computed from the loaded table. Ask a question in English and an LLM writes SQL. A read-only connection and a SELECT-only guard are what actually run it.</p>
+          </div>
+          <span class="go">Open the code →</span>
+        </a>
+        <a class="card" href="https://github.com/ChaitanyaNirantar/Health-and-Fitness-Dashboard" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Power BI · 2025</small>
+            <h3>Lifestyle Balance Analytics</h3>
+            <p>A Power BI report on workouts, nutrition, and activity. Three views: Train Smarter, Eat Better, and Diet Explorer. The workbook is in the repo.</p>
+          </div>
+          <span class="go">Open the workbook →</span>
+        </a>
+        <a class="card" href="https://iirer-frontend.vercel.app" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Java · React · MySQL</small>
+            <h3>IIRER case management</h3>
+            <p>A live app for vocational rehabilitation workflows: signup, JWT login, customer search, and VR, employment, and closure forms. Spring Boot on Railway, React on Vercel.</p>
+          </div>
+          <span class="go">Open the app →</span>
+        </a>
         <a class="card feature" href="https://public.tableau.com/views/MegaMartSalesDashboard_17532174754770/MegaMartSalesdashboard" target="_blank" rel="noopener noreferrer">
           <div>
             <small>Tableau · Jun–Jul 2025</small>
@@ -261,7 +285,7 @@
         <time>Now</time>
         <article>
           <h3>Open for May 2027</h3>
-          <p>Data engineering, backend, and applied ML. Champaign today. Willing to relocate.</p>
+          <p>Data engineering, data analytics, and backend. Champaign today. Willing to relocate.</p>
         </article>
       </div>
     </section>
@@ -269,20 +293,20 @@
     <section id="skills">
       <div class="section-h">
         <h2>How I work</h2>
-        <p>The tools show up in the jobs above. This is the set I reach for first.</p>
+        <p>The same set behind the data engineering work, the analyst dashboards, and the services.</p>
       </div>
       <div class="skills">
         <article>
-          <h3>Data platforms</h3>
-          <p>PostgreSQL, PostGIS, SQL modeling, ETL, QA/QC, Tableau, Excel, and R Shiny. I care about tables people can trust six months later.</p>
+          <h3>Data engineering</h3>
+          <p>Python, SQL, PostgreSQL, PostGIS, SQL Server, MySQL, and SQLite. ETL with validation and quarantine, schema design, and R when the researchers already live there. FastAPI for the catalog and the ask-the-data API.</p>
         </article>
         <article>
-          <h3>Backend</h3>
-          <p>Java, Spring Boot, REST, JWT and RBAC, microservices, Kubernetes, Azure DevOps, and CI/CD. Python when the pipeline wants it.</p>
+          <h3>Analytics</h3>
+          <p>Tableau, Power BI, Excel, and SQL for the question behind the chart. KPI design, time series, geospatial views, and the habit of showing the number and the grain it was counted at.</p>
         </article>
         <article>
-          <h3>Applied ML and the room</h3>
-          <p>Feature engineering and detection models from the DRDO internship, plus Google Cloud’s Introduction to Generative AI. Lean Six Sigma Green Belt. CAPM coursework in progress. I write for stakeholders who are not engineers.</p>
+          <h3>Backend and models</h3>
+          <p>Java, Spring Boot, React, REST, JWT, Kubernetes, and Azure DevOps. Detection models from the DRDO internship. For DataHub, an LLM proposes SQL and a read-only guard is what runs it.</p>
         </article>
       </div>
     </section>
@@ -295,6 +319,7 @@
       <div>
         <a class="big" href="mailto:chaitanyanirantar20@gmail.com?subject=Role%20for%20Chaitanya%20Nirantar">chaitanyanirantar20@gmail.com</a>
         <a class="big" href="https://www.linkedin.com/in/chaitanya-nirantar-0918841b3/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="big" href="https://github.com/ChaitanyaNirantar" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="big" href="mailto:chaitanyanirantar20@gmail.com?subject=Resume%20request%20%E2%80%94%20Chaitanya%20Nirantar">Resume on request</a>
       </div>
     </section>
